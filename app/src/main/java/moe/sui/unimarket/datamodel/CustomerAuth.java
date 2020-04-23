@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import okhttp3.*;
 
-public class UserAuth {
+public class CustomerAuth {
     private static String TAG = "UserAuth";
 
     private static final OkHttpClient client = new OkHttpClient();

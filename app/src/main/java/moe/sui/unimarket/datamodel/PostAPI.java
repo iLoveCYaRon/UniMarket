@@ -18,31 +18,11 @@ public class PostAPI {
     private static String TAG = "PostAPI";
     private static final String POSTPATH = "/wp-json/wp/v2/posts/";
     private static final OkHttpClient client = new OkHttpClient();
+    private static final Gson gson = new Gson();
 
     PostAPI(String site, String token) {
         this.site = site;
         this.token = token;
-    }
-
-    private RequestBody createBodyFromJson(String json) {
-
-        StringReader stringReader = new StringReader(json);
-        JsonReader jsonReader = new Gson().newJsonReader(stringReader);
-
-        FormBody.Builder formBuilder = new FormBody.Builder();
-        //读取JSON建立POST表格
-        try {
-            jsonReader.beginObject();
-            while (jsonReader.hasNext()) {
-                String name = jsonReader.nextName();
-                formBuilder.add(name, jsonReader.nextString());
-            }
-            jsonReader.endObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return formBuilder.build();
     }
 
     // 根据id取回Post，成功返回取得的Post，失败返回空值
@@ -64,14 +44,16 @@ public class PostAPI {
     }
 
     // 请求新增文章，如果成功则返回新增的文章，不成功返回空值
-    public Post addPost(String postJson) {
-        RequestBody formBody = createBodyFromJson(postJson);
+    public Post addPost(Post post) {
+        String postJson = gson.toJson(post, Post.class);
+
+        RequestBody body = RequestBody.create(Config.JSON, postJson);
 
         // 建立POST请求, 需要鉴权
         Request request = new Request.Builder()
                 .url(site + POSTPATH)
                 .addHeader("Authorization", "Bearer " + token)
-                .post(formBody)
+                .post(body)
                 .build();
 
         //发送请求并输出响应
@@ -115,7 +97,7 @@ public class PostAPI {
         Request request = new Request.Builder()
                 .url(site + POSTPATH + id)
                 .addHeader("Authorization", "Bearer " + token)
-                .post(createBodyFromJson(postJson))
+                .post(Config.createBodyFromJson(postJson))
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
