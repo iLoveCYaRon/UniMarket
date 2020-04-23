@@ -22,8 +22,9 @@ public class APITest {
 //
 //        if(CustomerAPI.updateCustomer(1,customer) == null)
 //            Log.e("APITest", "run: Failed");
-
-
+//        ListProductTest
+//        if (ProductAPI.listProduct() == null)
+//            Log.e("APITest", "run: Failed");
     }
 
 }
