@@ -1,11 +1,14 @@
 package moe.sui.unimarket;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.GridLayout;
 
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.youth.banner.Banner;
@@ -15,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import moe.sui.unimarket.adapter.ImageNetAdapter;
+import moe.sui.unimarket.adapter.ProductAdapter;
 import moe.sui.unimarket.datamodel.APITest;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;
@@ -63,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
                     // 开始轮播
                     banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")));
                     banner.start();
+
+                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
+                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
+                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(adapter);
                     break;
             }
         }
