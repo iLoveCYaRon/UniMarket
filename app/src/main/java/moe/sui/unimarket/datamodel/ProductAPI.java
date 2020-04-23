@@ -29,7 +29,6 @@ public class ProductAPI {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) Log.e(TAG, "listProduct: "+ Objects.requireNonNull(response.body()).string());
             // 如果成功返回Product数组
-            List<Product> test = gson.fromJson(Objects.requireNonNull(response.body()).string(), new TypeToken<List<Product>>(){}.getType());
             return gson.fromJson(Objects.requireNonNull(response.body()).string(), new TypeToken<List<Product>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,10 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="QMUI.Compat">
+    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FE4D46</item>
-        <item name="colorPrimaryDark">#FF3940</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="LaunchTheme" parent="Theme.AppCompat">
