@@ -7,5 +7,9 @@
         <item name="colorPrimaryDark">#FF3940</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="LaunchTheme" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/ic_launcher_startuppage</item>
+    </style>
 </resources>
