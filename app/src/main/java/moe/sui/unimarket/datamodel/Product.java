@@ -1,8 +1,9 @@
 package moe.sui.unimarket.datamodel;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Product {
+public class Product implements Serializable {
     /**
      * id : 23
      * name : Album
