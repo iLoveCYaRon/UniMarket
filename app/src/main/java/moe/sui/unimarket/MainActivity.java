@@ -1,9 +1,11 @@
 package moe.sui.unimarket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
@@ -27,6 +30,7 @@ import java.util.List;
 import moe.sui.unimarket.adapter.ImageNetAdapter;
 
 import moe.sui.unimarket.datamodel.APITest;
+import moe.sui.unimarket.datamodel.PermissionsUtils;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;
 import moe.sui.unimarket.fragment.ProductTitleFragment;
@@ -43,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         topBar.setTitle("优易");
         topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button);
         topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
+
+        //电话权限和数据读写权限
+        String[] permissions = new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        //PermissionsUtils.showSystemSetting = false;//是否支持显示系统设置权限设置窗口跳转
+        //这里的this不是上下文，是Activity对象！
+        PermissionsUtils.getInstance().chekPermissions(this, permissions, permissionsResult);
 
 
         // 设置按钮监听
@@ -97,5 +107,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+    //创建监听权限的接口对象
+    PermissionsUtils.IPermissionsResult permissionsResult = new PermissionsUtils.IPermissionsResult() {
+        @Override
+        public void passPermissons() {
+            Toast.makeText(MainActivity.this, "权限通过，可以做其他事情!", Toast.LENGTH_SHORT).show();
+        }
 
+        @Override
+        public void forbitPermissons() {
+//            finish();
+            Toast.makeText(MainActivity.this, "权限不通过!", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //就多一个参数this
+        PermissionsUtils.getInstance().onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
 }
