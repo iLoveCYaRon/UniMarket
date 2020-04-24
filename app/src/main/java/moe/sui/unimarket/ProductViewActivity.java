@@ -14,7 +14,6 @@ public class ProductViewActivity extends AppCompatActivity {
 
     public static void actionStart(Context context, String productTitle, String imageUri, String productContent) {
         Intent intent = new Intent(context, ProductViewActivity.class);
-
         intent.putExtra("title", productTitle);
         intent.putExtra("uri", imageUri);
         intent.putExtra("content", productContent);

@@ -115,9 +115,12 @@ public class ProductTitleFragment extends Fragment {
 
         // 设置topBar
         QMUITopBar topBar = view.findViewById(R.id.topbar);
-        topBar.addLeftBackImageButton();
-        topBar.setTitle("全部商品");
-
+        topBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         return view;
     }
 
