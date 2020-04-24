@@ -12,7 +12,7 @@
             <com.qmuiteam.qmui.widget.QMUITopBar
                 android:id="@+id/main_TopBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@color/colorPrimary"
                 android:fitsSystemWindows="true"
                 android:pointerIcon="vertical_double_arrow"
@@ -171,7 +171,7 @@
             </com.youth.banner.Banner>
 
             <Button
-                android:id="@+id/button11"
+                android:id="@+id/btn_viewAllProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="查看更多"
