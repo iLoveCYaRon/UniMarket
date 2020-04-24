@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 
 
-public class LauncherActivity extends Activity {
+public class LauncherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
