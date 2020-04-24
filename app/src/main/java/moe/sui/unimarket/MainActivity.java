@@ -7,25 +7,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.youth.banner.Banner;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import moe.sui.unimarket.adapter.ImageNetAdapter;
-import moe.sui.unimarket.adapter.ProductAdapter;
+
 import moe.sui.unimarket.datamodel.APITest;
 import moe.sui.unimarket.datamodel.PermissionsUtils;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;
+import moe.sui.unimarket.fragment.ProductTitleFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        QMUITopBarLayout topBar = findViewById(R.id.main_TopBar);
+        // TopBar设置
+        QMUITopBar topBar = findViewById(R.id.main_TopBar);
         topBar.setTitle("优易");
+        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button);
+        topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
+
         //电话权限和数据读写权限
         String[] permissions = new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         //PermissionsUtils.showSystemSetting = false;//是否支持显示系统设置权限设置窗口跳转
@@ -43,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         PermissionsUtils.getInstance().chekPermissions(this, permissions, permissionsResult);
 
 
+        // 设置按钮监听
+        Button button = findViewById(R.id.btn_viewAllProduct);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ProductTitleActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){
@@ -77,11 +98,11 @@ public class MainActivity extends AppCompatActivity {
                     banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")));
                     banner.start();
 
-                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
-                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
-                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(adapter);
+//                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
+//                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
+//                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//                    recyclerView.setLayoutManager(layoutManager);
+//                    recyclerView.setAdapter(adapter);
                     break;
             }
         }

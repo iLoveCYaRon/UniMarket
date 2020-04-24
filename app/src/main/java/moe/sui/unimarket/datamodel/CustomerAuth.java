@@ -21,7 +21,7 @@ public class CustomerAuth {
 
         //利用body和url建立POST request
         Request request = new Request.Builder()
-                .url("https://wp.sui.moe/wp-json/jwt-auth/v1/token")
+                .url("https://shop.sui.moe/wp-json/jwt-auth/v1/token")
                 .post(formBody)
                 .build();
 
@@ -43,7 +43,7 @@ public class CustomerAuth {
         RequestBody body = RequestBody.create(mediaType, "");
 
         Request request = new Request.Builder()
-                .url("https://wp.sui.moe/wp-json/jwt-auth/v1/token/validate")
+                .url("https://shop.sui.moe/wp-json/jwt-auth/v1/token/validate")
                 .method("POST", body)
                 .addHeader("Authorization", "Bearer " + token)
                 .build();
