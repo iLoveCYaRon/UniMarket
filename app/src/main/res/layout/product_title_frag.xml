@@ -18,11 +18,22 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:qmui_collapsedTitleGravity="center"
             app:qmui_contentScrim="?attr/qmui_config_color_blue"
-            app:qmui_expandedTitleGravity="center_horizontal|bottom"
+            app:qmui_expandedTitleMarginStart="20dp"
+            app:qmui_expandedTitleGravity="left|bottom"
             app:qmui_expandedTitleMarginBottom="20dp"
             app:qmui_statusBarScrim="?attr/qmui_config_color_blue"
             app:qmui_followTopBarCommonSkin="true"
-            android:minHeight="?attr/qmui_topbar_height">
+            android:minHeight="?attr/qmui_topbar_height" >
+
+            <com.qmuiteam.qmui.widget.QMUIRadiusImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="“全部商品"
+                android:fitsSystemWindows="false"
+                android:scaleType="centerCrop"
+                android:src="@drawable/main_visual_2"
+                app:qmui_layout_collapseMode="parallax"
+                app:qmui_layout_collapseParallaxMultiplier="0.7"/>
 
             <com.qmuiteam.qmui.widget.QMUITopBar
                 android:id="@+id/topbar"
@@ -31,7 +42,9 @@
                 android:fitsSystemWindows="true"
                 app:qmui_layout_collapseMode="pin"
                 android:background="@color/qmui_config_color_transparent"
-                app:qmui_bottomDividerHeight="0px"/>
+                app:qmui_bottomDividerHeight="0px"
+                />
+
         </com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout>
 
     </com.qmuiteam.qmui.widget.QMUIAppBarLayout>

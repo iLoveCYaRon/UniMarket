@@ -18,8 +18,9 @@
             android:textSize="24sp" />
 
         <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/detail_photo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="308dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/main_visual_2" />
 

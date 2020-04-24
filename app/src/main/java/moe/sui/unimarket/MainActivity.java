@@ -98,11 +98,6 @@ public class MainActivity extends AppCompatActivity {
                     banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")));
                     banner.start();
 
-//                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
-//                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
-//                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//                    recyclerView.setLayoutManager(layoutManager);
-//                    recyclerView.setAdapter(adapter);
                     break;
             }
         }

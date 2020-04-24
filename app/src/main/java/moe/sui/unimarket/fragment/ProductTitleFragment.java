@@ -1,7 +1,10 @@
 package moe.sui.unimarket.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +18,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout;
+import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.youth.banner.Banner;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.zip.Inflater;
 
 import moe.sui.unimarket.ProductViewActivity;
 import moe.sui.unimarket.R;
+import moe.sui.unimarket.adapter.ImageNetAdapter;
+import moe.sui.unimarket.datamodel.APITest;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;
 
@@ -62,7 +73,7 @@ public class ProductTitleFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Product product = mProductList.get(viewHolder.getAdapterPosition());
-                    ProductViewActivity.actionStart(getActivity(), product.getName(), //product.getImages().get(0).getSrc(),
+                    ProductViewActivity.actionStart(getActivity(), product.getName(), product.getImages().get(0).getSrc(),
                             product.getDescription());
                 }
             });
@@ -73,7 +84,7 @@ public class ProductTitleFragment extends Fragment {
         public void onBindViewHolder(ViewHolder holder,int position) {
             Product product = mProductList.get(position);
             holder.textView.setText(product.getName());
-            //Glide.with(mContext).load(product.getImages().get(0).getSrc()).into(holder.imageView);
+            Glide.with(mContext).load(product.getImages().get(0).getSrc()).into(holder.imageView);
         }
 
         @Override
@@ -83,28 +94,52 @@ public class ProductTitleFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.product_title_frag, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.product_title_recycler_view);
+        // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                List<Product> productList = ProductAPI.listProduct();
+                Message msg = new Message();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("productList", (Serializable) productList);
+                bundle.putSerializable("container", (Serializable) container);
+                msg.setData(bundle);
+                msg.what = 1;
+                handler.sendMessage(msg);
+            }
+        }).start();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        // 设置topBar
+        QMUITopBar topBar = view.findViewById(R.id.topbar);
+        topBar.addLeftBackImageButton();
+        topBar.setTitle("全部商品");
 
-        ProductAdapter adapter = new ProductAdapter(getProduct());
-        recyclerView.setAdapter(adapter);
         return view;
     }
 
-    private List<Product> getProduct() {
-        List<Product> productList = new ArrayList<>();
-        for (int i = 1; i<10; i++) {
-            Product product = new Product();
-            product.setName("Name" + i);
-            product.setDescription("This is drsifsaidnjkf" + i);
-            productList.add(product);
+
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler()
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case 1:
+                    // 获取完数据，可以加载recyclerView
+                    RecyclerView recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.product_title_recycler_view);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(linearLayoutManager);
+                    recyclerView.setAdapter(new ProductAdapter((List<Product>) msg.getData().getSerializable("productList")));
+                    break;
+            }
         }
-        return  productList;
-    }
+    };
+
 }
 

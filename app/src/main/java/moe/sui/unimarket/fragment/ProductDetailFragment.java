@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 
 import moe.sui.unimarket.R;
 
@@ -24,15 +25,15 @@ public class ProductDetailFragment extends Fragment {
         return view;
     }
 
-    public void refresh(String productTitle, String productContent) {
+    public void refresh(String productTitle, String imageUri, String productContent) {
         View visibilityLayout = view.findViewById(R.id.visibility_layout);
         visibilityLayout.setVisibility(View.VISIBLE);
         TextView productTitleText = view.findViewById(R.id.product_name);
-        //PhotoView photoView = view.findViewById(R.id.product_view);
+        PhotoView photoView = view.findViewById(R.id.detail_photo);
         TextView productContentText = view.findViewById(R.id.product_content);
 
         productTitleText.setText(productTitle);
-        //Glide.with(this).load(imageUri).into(photoView);
+        Glide.with(this).load(imageUri).into(photoView);
         productContentText.setText(productContent);
     }
 }
