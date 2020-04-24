@@ -8,10 +8,15 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.youth.banner.Banner;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -30,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        QMUITopBarLayout topBar = findViewById(R.id.main_TopBar);
+        // TopBar设置
+        QMUITopBar topBar = findViewById(R.id.main_TopBar);
         topBar.setTitle("优易");
-
+        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button);
+        topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
 
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
@@ -68,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
                     banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")));
                     banner.start();
 
-                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
-                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
-                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(adapter);
+//                    GridLayoutManager layoutManager = new GridLayoutManager(getParent(), 2);
+//                    ProductAdapter adapter = new ProductAdapter((ArrayList<Product>) msg.getData().getSerializable("productList"));
+//                    RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//                    recyclerView.setLayoutManager(layoutManager);
+//                    recyclerView.setAdapter(adapter);
                     break;
             }
         }

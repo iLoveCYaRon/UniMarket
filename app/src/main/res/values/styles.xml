@@ -7,9 +7,18 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="LaunchTheme" parent="Theme.AppCompat">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/ic_launcher_startuppage</item>
+    </style>
+
+
+    <!-- TopBar style -->
+    <style name="UniTopBarStyle" parent="QMUI.TopBar">
+        <item name="qmui_topbar_title_text_size">24sp</item>
+        <item name="qmui_background_color">@color/colorPrimary</item>
+        <item name="qmui_topbar_title_color">#FFFFFF</item>
     </style>
 </resources>
