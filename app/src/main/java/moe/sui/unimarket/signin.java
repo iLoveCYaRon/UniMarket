@@ -16,9 +16,9 @@ public class signin extends AppCompatActivity implements View.OnClickListener {
     private EditText username;     //存储读入用户名，密码
     private EditText password;
 
-
+    @Override
     //对按钮的各自初始化
-    protected  void onCreat(Bundle savedInstanceState){
+    protected  void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button button=(Button) findViewById(R.id.button);
@@ -38,7 +38,7 @@ public class signin extends AppCompatActivity implements View.OnClickListener {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }break;
-            default:
+                default:
                 break;
         }
     }
