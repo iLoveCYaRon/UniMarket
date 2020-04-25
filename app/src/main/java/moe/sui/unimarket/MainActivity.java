@@ -41,19 +41,10 @@ import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText username;     //存储读入用户名，密码
-    private EditText password;
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //新加入
-        setContentView(R.layout.activity_login);
-        Button button = findViewById(R.id.button);
-        username = findViewById(R.id.account);
-        password = findViewById(R.id.pwd);
-        button.setOnClickListener((View.OnClickListener) this);
 
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
@@ -61,24 +52,13 @@ public class MainActivity extends AppCompatActivity {
         // 左上角登陆按钮事件
         topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
 
-            //对按钮的各自初始化
-
-
             @Override
             public void onClick(View v) {
                 // 启动登录界面
-                switch (v.getId()){
-                    case R.id.button:
-                        String user = username.getText().toString();
-                        String pass = password.getText().toString();
-                        try {
-                            auth(user,pass);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }break;
-                    default:
-                        break;
-                }
+                finish();
+               Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+               startActivity(intent);
+
             }
         });
         topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
@@ -91,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 设置按钮监听
-        Button button_one = findViewById(R.id.btn_viewAllProduct);
+        Button button = findViewById(R.id.btn_viewAllProduct);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
