@@ -3,6 +3,9 @@
     android:layout_width="fill_parent"
 
     android:layout_height="fill_parent"
+    xmlns:Android="http://schemas.android.com/tools"
+
+    android:background="#DBDBDB"
 
     android:gravity="center"
 
@@ -13,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="优易"
-        android:textSize="36px"
+        android:textSize="48px"
         android:gravity="center"
         />
     <TextView />
@@ -27,7 +30,7 @@
 
             android:id="@+id/account"
 
-            android:layout_width="match_parent"
+            android:layout_width="299dp"
 
             android:layout_height="wrap_content"
             android:hint="用户名,邮箱或手机号"
@@ -36,11 +39,10 @@
 
             android:textSize="24px" />
 
-        <TextView />
 
     </TableRow>
 
-    <TableRow android:layout_marginTop="20px">
+    <TableRow android:layout_marginTop="24px">
 
 
         <EditText
@@ -58,23 +60,23 @@
 
             android:inputType="textPassword"/>
 
-        <TextView />
 
     </TableRow>
 
     <TableRow android:layout_marginTop="20px">
 
-        <TextView />
 
         <Button
 
             android:id="@+id/login"
 
-            android:text="登录"
+            android:gravity="center"
 
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
+
+            android:text="登录"
 
             />
 

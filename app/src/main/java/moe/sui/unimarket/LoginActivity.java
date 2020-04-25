@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText username;     //存储读入用户名，密码
     private EditText password;
 
+
     @Override
     //对按钮的各自初始化
     protected void onCreate(Bundle savedInstanceState) {
