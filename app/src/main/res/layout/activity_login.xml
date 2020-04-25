@@ -1,0 +1,81 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+
+    android:layout_height="fill_parent"
+
+    android:gravity="center"
+
+    android:stretchColumns="0,3">
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="优易"
+        android:textSize="36px"
+        android:gravity="center"
+        />
+    <TextView />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+
+            android:id="@+id/account"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:hint="用户名,邮箱或手机号"
+
+            android:minWidth="220px"
+
+            android:textSize="24px" />
+
+        <TextView />
+
+    </TableRow>
+
+    <TableRow android:layout_marginTop="20px">
+
+
+        <EditText
+
+            android:id="@+id/pwd"
+
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+
+            android:minWidth="220px"
+
+            android:textSize="24px"
+
+            android:inputType="textPassword"/>
+
+        <TextView />
+
+    </TableRow>
+
+    <TableRow android:layout_marginTop="20px">
+
+        <TextView />
+
+        <Button
+
+            android:id="@+id/login"
+
+            android:text="登录"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            />
+
+</TableLayout>
