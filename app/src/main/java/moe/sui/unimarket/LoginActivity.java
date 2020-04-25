@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Button button = findViewById(R.id.button);
+        Button button = findViewById(R.id.btn_login);
         username = findViewById(R.id.account);
         password = findViewById(R.id.pwd);
         button.setOnClickListener(this);
@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override             //点击登录按钮后执行操作
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button:
+            case R.id.btn_login:
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 try {

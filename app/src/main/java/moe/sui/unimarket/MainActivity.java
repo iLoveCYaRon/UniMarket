@@ -18,6 +18,7 @@ import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.qmuiteam.qmui.alpha.QMUIAlphaImageButton;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.youth.banner.Banner;
@@ -51,14 +52,10 @@ public class MainActivity extends AppCompatActivity {
         topBar.setTitle("优易");
         // 左上角登陆按钮事件
         topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                // 启动登录界面
-                finish();
-               Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-               startActivity(intent);
-
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
             }
         });
         topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);

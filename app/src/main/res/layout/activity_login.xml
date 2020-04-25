@@ -68,7 +68,7 @@
 
         <Button
 
-            android:id="@+id/login"
+            android:id="@+id/btn_login"
 
             android:gravity="center"
 
