@@ -45,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
         topBar.setTitle("优易");
-        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button);
+        // 左上角登陆按钮事件
+        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动登录界面
+            }
+        });
         topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
 
         //电话权限和数据读写权限

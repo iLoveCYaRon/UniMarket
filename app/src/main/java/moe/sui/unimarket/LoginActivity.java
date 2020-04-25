@@ -11,19 +11,19 @@ import java.io.IOException;
 
 import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
 
-public class signin extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText username;     //存储读入用户名，密码
     private EditText password;
 
     @Override
     //对按钮的各自初始化
-    protected  void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button button=(Button) findViewById(R.id.button);
-        username = (EditText) findViewById(R.id.account);
-        password=(EditText)findViewById(R.id.pwd);
+        setContentView(R.layout.activity_login);
+        Button button = findViewById(R.id.button);
+        username = findViewById(R.id.account);
+        password = findViewById(R.id.pwd);
         button.setOnClickListener(this);
     }
 
@@ -31,8 +31,8 @@ public class signin extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button:
-                String user=username.getText().toString();
-                String pass=password.getText().toString();
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
                 try {
                     auth(user,pass);
                 } catch (IOException e) {
