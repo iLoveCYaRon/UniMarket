@@ -15,17 +15,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.load.resource.bitmap.CenterInside;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.youth.banner.Banner;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
+import com.youth.banner.config.IndicatorConfig;
+import com.youth.banner.indicator.CircleIndicator;
+import com.youth.banner.util.BannerUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import moe.sui.unimarket.adapter.ImageNetAdapter;
 
@@ -44,26 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
-        topBar.setTitle("优易");
-        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button);
-        topBar.addRightImageButton(R.drawable.ic_search, R.id.empty_view_button);
-
-        //电话权限和数据读写权限
-        String[] permissions = new String[]{Manifest.permission.CALL_PHONE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        //PermissionsUtils.showSystemSetting = false;//是否支持显示系统设置权限设置窗口跳转
-        //这里的this不是上下文，是Activity对象！
-        PermissionsUtils.getInstance().chekPermissions(this, permissions, permissionsResult);
+        topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button);
+        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
+        ImageView searchView = new ImageView(getApplicationContext());
+        searchView.setImageResource(R.drawable.main_search_bar);
+        searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        topBar.setCenterView(searchView);
 
 
         // 设置按钮监听
-        Button button = findViewById(R.id.btn_viewAllProduct);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ProductTitleActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button button = findViewById(R.id.btn_viewAllProduct);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, ProductTitleActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){
@@ -95,31 +98,19 @@ public class MainActivity extends AppCompatActivity {
                     // 1代表图片列表加载完毕 可以开始载入图片和轮播
                     Banner banner = findViewById(R.id.banner);
                     // 开始轮播
-                    banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")));
-                    banner.start();
+                    banner.setAdapter(new ImageNetAdapter((ArrayList<Product>) msg.getData().getSerializable("productList")))
+                            .setBannerRound2(BannerUtils.dp2px(6))
+                            .setIndicator(new CircleIndicator(getApplicationContext()))
+                            .setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
+                            .setIndicatorSelectedColorRes(R.color.colorPrimary)
+                            .setIndicatorNormalColorRes(R.color.colorAlphaBackground)
+                            .setIndicatorNormalWidth((int) BannerUtils.dp2px(6))
+                            .setIndicatorSelectedWidth((int) BannerUtils.dp2px(6))
+                            .setIndicatorMargins(new IndicatorConfig.Margins((int) BannerUtils.dp2px(12)))
+                            .start();
 
                     break;
             }
         }
     };
-    //创建监听权限的接口对象
-    PermissionsUtils.IPermissionsResult permissionsResult = new PermissionsUtils.IPermissionsResult() {
-        @Override
-        public void passPermissons() {
-            Toast.makeText(MainActivity.this, "欢迎来到优易!", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void forbitPermissons() {
-//            finish();
-            Toast.makeText(MainActivity.this, "权限不通过!", Toast.LENGTH_SHORT).show();
-        }
-    };
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //就多一个参数this
-        PermissionsUtils.getInstance().onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-    }
 }
