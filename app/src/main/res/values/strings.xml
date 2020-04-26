@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">优易</string>
-
+    <string name="product_cate">商品分类</string>
+    <string name="product_recommend">推荐商品</string>
+    <string name="school_run">校园跑腿</string>
+    <string name="investigation_help">问卷助力</string>
+    <string name="two_hand_textbook">二手课本</string>
+    <string name="lecture_info">讲座信息</string>
+    <string name="view_more">查看更多</string>
+    <string name="view_all">查看全部</string>
 </resources>
