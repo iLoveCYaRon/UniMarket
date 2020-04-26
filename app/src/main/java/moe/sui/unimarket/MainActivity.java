@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
     PermissionsUtils.IPermissionsResult permissionsResult = new PermissionsUtils.IPermissionsResult() {
         @Override
         public void passPermissons() {
-            Toast.makeText(MainActivity.this, "权限通过，可以做其他事情!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "欢迎来到优易!", Toast.LENGTH_SHORT).show();
         }
 
         @Override
