@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:id="@+id/scrollView2"
+            android:id="@+id/main_scorll"
             android:layout_width="match_parent"
             android:layout_height="539dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +31,7 @@
                     android:elevation="0dp">
 
                     <ImageView
-                        android:id="@+id/imageView2"
+                        android:id="@+id/img_banner_background"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:scaleType="fitStart"
@@ -41,7 +41,7 @@
                         app:srcCompat="@drawable/main_rect_bar" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/text_category"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="  商品分类"
@@ -79,7 +79,7 @@
             android:fitsSystemWindows="true"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+            app:layout_constraintBottom_toTopOf="@+id/main_scorll"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
