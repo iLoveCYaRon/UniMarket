@@ -39,16 +39,17 @@ import moe.sui.unimarket.datamodel.ProductAPI;
 
 public class ProductTitleFragment extends Fragment {
 
+    // ProductAdapter 内部类
     class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
         private Context mContext;
         private List<Product> mProductList;
 
-         class ViewHolder extends RecyclerView.ViewHolder {
+        class ViewHolder extends RecyclerView.ViewHolder {
             CardView cardView;
             ImageView imageView;
             TextView textView;
 
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
 
                 cardView = (CardView) view;
@@ -57,7 +58,7 @@ public class ProductTitleFragment extends Fragment {
             }
         }
 
-        public ProductAdapter(List<Product> productList) {
+        ProductAdapter(List<Product> productList) {
             mProductList = productList;
         }
 
