@@ -50,16 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
-        topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button);
-        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
-        ImageView searchView = new ImageView(getApplicationContext());
-        searchView.setImageResource(R.drawable.main_search_bar);
-        searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        topBar.setCenterView(searchView);
-
-        topBar.setTitle("优易");
-        // 左上角登陆按钮事件
-        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+        topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
+        ImageView searchView = new ImageView(getApplicationContext());
+        searchView.setImageResource(R.drawable.main_search_bar);
+        searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        topBar.setCenterView(searchView);
 
         // 设置按钮监听
 //        Button button = findViewById(R.id.btn_viewAllProduct);
