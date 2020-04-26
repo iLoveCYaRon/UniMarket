@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 login(user,pass);
+                finish();
                 break;
                 default:
                 break;
@@ -58,11 +60,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                        Message message = new Message();
                        message.what = 1;
                        message.obj = "登录成功";
-
+                       handler.handleMessage(message);
                    }else{
                        Message message=new Message();
                        message.what=2;
                        message.obj = "登录失败";
+                       handler.handleMessage(message);
                    }
 
                } catch (IOException e) {
@@ -78,12 +81,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void handleMessage(Message msg){
             switch (msg.what){
                 case 1:
+                    Looper.prepare();
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    //Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                    //startActivity(intent);
+                    Looper.loop();
                     break;
                 case 2:
+                    Looper.prepare();       //子线程调用toast会出错，需加Loopet.prepare() 和 Looper.loop()
                     Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+                    Looper.loop();
                     break;
                 default:break;
             }
