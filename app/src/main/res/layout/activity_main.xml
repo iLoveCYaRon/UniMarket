@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="539dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,17 +74,22 @@
         <com.qmuiteam.qmui.widget.QMUITopBar
             android:id="@+id/main_TopBar"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
             app:layout_constraintTop_toTopOf="parent"
             app:qmui_bottomDividerColor="@color/colorBackground"
             app:qmui_bottomDividerHeight="0px"
-            app:qmui_topbar_image_btn_height="30dp"
-            app:qmui_topbar_image_btn_width="45dp"
+            app:qmui_topbar_image_btn_height="50dp"
+            app:qmui_topbar_image_btn_width="25dp"
+            app:qmui_topbar_subtitle_text_size="0sp"
             app:qmui_topbar_title_color="@color/colorBackground"
-            app:qmui_topbar_title_container_padding_horizontal="16dp"
-            app:qmui_topbar_title_text_size="20sp">
+            app:qmui_topbar_title_gravity="center"
+            app:qmui_topbar_title_text_size="0sp"
+            app:qmui_topbar_title_text_size_with_subtitle="0sp">
 
         </com.qmuiteam.qmui.widget.QMUITopBar>
     </androidx.constraintlayout.widget.ConstraintLayout>

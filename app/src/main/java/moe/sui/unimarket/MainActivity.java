@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button);
         topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
         ImageView searchView = new ImageView(getApplicationContext());
-        searchView.setImageResource(R.drawable.main_search_text_bar);
+        searchView.setImageResource(R.drawable.main_search_bar);
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         topBar.setCenterView(searchView);
 
