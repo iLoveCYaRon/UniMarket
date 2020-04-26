@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProductTitleActivity">
-
+        </activity>
+        <activity android:name=".LoginActivity">
         </activity>
         <activity android:name=".ProductViewActivity"></activity>
         <activity android:name=".MainActivity">
