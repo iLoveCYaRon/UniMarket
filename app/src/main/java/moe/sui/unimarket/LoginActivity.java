@@ -54,15 +54,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
            public void run(){
                try {
                    token=auth("Yui","xs&(!g$ekBOJU!OxJH");
-                   //if(token!=null){
-                       Message message=new Message();
-                       message.what=1;
-                       message.obj="登录成功";
+                   if(token!=null) {
+                       Message message = new Message();
+                       message.what = 1;
+                       message.obj = "登录成功";
 
-                   /*}else{
+                   }else{
                        Message message=new Message();
                        message.what=2;
-                   }*/
+                       message.obj = "登录失败";
+                   }
 
                } catch (IOException e) {
                    e.printStackTrace();
@@ -75,7 +76,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @SuppressLint("HandlerLeak")
     Handler handler=new Handler(){
         public void handleMessage(Message msg){
-           // Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
             switch (msg.what){
                 case 1:
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
@@ -85,6 +85,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 case 2:
                     Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
                     break;
+                default:break;
             }
         }
 
