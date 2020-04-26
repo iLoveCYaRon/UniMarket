@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class APITest {
 
     public static void run() {
@@ -19,12 +21,17 @@ public class APITest {
 //
 //        assert customer != null;
 //        customer.setFirst_name("TestFirst");
-//
+
 //        if(CustomerAPI.updateCustomer(1,customer) == null)
 //            Log.e("APITest", "run: Failed");
 //        ListProductTest
 //        if (ProductAPI.listProduct() == null)
 //            Log.e("APITest", "run: Failed");
+
+//        if(CategoryAPI.listCategory() == null)
+//            Log.e("APITest", "run: Failed");
+//        else
+//            Log.e("APITest", "run: Succeed");
     }
 
 }

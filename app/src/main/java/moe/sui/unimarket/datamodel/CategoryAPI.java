@@ -15,13 +15,16 @@ import okhttp3.Response;
 
 public class CategoryAPI {
     private static String TAG = "CategoryAPI";
-    private static final String CategoryPATH = "/wp-json/wc/v3/products-category/";
+    private static final String CategoryPATH = "/wp-json/wc/v3/products/categories";
     private static final OkHttpClient client = new OkHttpClient();
     private static final Gson gson = new Gson();
 
     public static List<Category> listCategory(){
         Request request = new Request.Builder()
                 .url(Config.SITE + CategoryPATH)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Content-Type", "text/plain")
+                .addHeader("Authorization", Config.SUPERTOKEN)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
