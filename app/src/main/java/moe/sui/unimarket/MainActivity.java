@@ -57,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         topBar.setCenterView(searchView);
 
+        topBar.setTitle("优易");
+        // 左上角登陆按钮事件
+        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 设置按钮监听
 //        Button button = findViewById(R.id.btn_viewAllProduct);
