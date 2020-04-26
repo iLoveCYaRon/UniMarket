@@ -1,9 +1,14 @@
 package moe.sui.unimarket;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +20,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText username;     //存储读入用户名，密码
     private EditText password;
+    String token;
 
 
     @Override
@@ -34,13 +40,54 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_login:
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
-                try {
-                    auth(user,pass);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }break;
+                login(user,pass);
+                break;
                 default:
                 break;
         }
     }
+
+    //子线程，进行登录操作
+    private void login(final String user, final String pass){
+       new Thread(new Runnable(){
+           @Override
+           public void run(){
+               try {
+                   token=auth("Yui","xs&(!g$ekBOJU!OxJH");
+                   //if(token!=null){
+                       Message message=new Message();
+                       message.what=1;
+                       message.obj="登录成功";
+
+                   /*}else{
+                       Message message=new Message();
+                       message.what=2;
+                   }*/
+
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+           }
+       }).start();
+    }
+
+    //根据返回的token不同，进行不同操作
+    @SuppressLint("HandlerLeak")
+    Handler handler=new Handler(){
+        public void handleMessage(Message msg){
+           // Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+            switch (msg.what){
+                case 1:
+                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    //Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                    //startActivity(intent);
+                    break;
+                case 2:
+                    Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+
+    };
+
 }

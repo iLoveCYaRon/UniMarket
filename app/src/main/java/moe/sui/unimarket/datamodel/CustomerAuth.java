@@ -1,10 +1,14 @@
 package moe.sui.unimarket.datamodel;
 
+import android.widget.Toast;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+import moe.sui.unimarket.LoginActivity;
+import moe.sui.unimarket.MainActivity;
 import okhttp3.*;
 
 public class CustomerAuth {
@@ -36,6 +40,7 @@ public class CustomerAuth {
             e.printStackTrace();
         }
         return null;
+
     }
 
     public static boolean authValidate(String token) throws IOException {

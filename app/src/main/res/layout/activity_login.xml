@@ -70,11 +70,11 @@
 
             android:id="@+id/btn_login"
 
-            android:gravity="center"
-
             android:layout_width="match_parent"
 
             android:layout_height="wrap_content"
+
+            android:gravity="center"
 
             android:text="登录"
 
