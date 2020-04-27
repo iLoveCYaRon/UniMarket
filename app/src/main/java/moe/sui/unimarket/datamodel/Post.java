@@ -2,9 +2,10 @@ package moe.sui.unimarket.datamodel;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Post {
+public class Post implements Serializable {
     /**
      * id : 1
      * date : 2020-04-16T12:36:19
