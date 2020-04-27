@@ -3,9 +3,11 @@ package moe.sui.unimarket;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,15 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
-        topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button);
-        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
-        ImageView searchView = new ImageView(getApplicationContext());
-        searchView.setImageResource(R.drawable.main_search_bar);
-        searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        topBar.setCenterView(searchView);
-        topBar.setTitle("优易");
-        // 左上角登陆按钮事件
-        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+        topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -57,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
+        ImageView searchView = new ImageView(getApplicationContext());
+        searchView.setImageResource(R.drawable.main_search_bar);
+        searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        topBar.setCenterView(searchView);
+        topBar.setTitle("优易");
+
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){
