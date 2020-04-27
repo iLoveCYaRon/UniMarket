@@ -30,6 +30,16 @@
                     android:layout_height="match_parent"
                     android:elevation="0dp">
 
+                    <ImageView
+                        android:id="@+id/img_banner_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:scaleType="fitStart"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/main_rect_bar" />
+
                     <TextView
                         android:id="@+id/text_category"
                         android:layout_width="match_parent"
@@ -55,12 +65,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:id="@+id/img_banner_background"
-                            android:layout_width="match_parent"
-                            android:layout_height="300dp"
-                            android:scaleType="fitStart"
-                            app:srcCompat="@drawable/main_rect_bar" />
                     </com.youth.banner.Banner>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
