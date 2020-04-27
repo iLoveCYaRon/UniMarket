@@ -32,7 +32,6 @@ import java.util.zip.Inflater;
 
 import moe.sui.unimarket.ProductViewActivity;
 import moe.sui.unimarket.R;
-import moe.sui.unimarket.adapter.ImageNetAdapter;
 import moe.sui.unimarket.datamodel.APITest;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;

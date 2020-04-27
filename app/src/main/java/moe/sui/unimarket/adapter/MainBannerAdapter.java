@@ -20,62 +20,55 @@ import com.youth.banner.adapter.BannerAdapter;
 import com.youth.banner.util.BannerUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 import moe.sui.unimarket.ProductViewActivity;
 import moe.sui.unimarket.R;
+import moe.sui.unimarket.datamodel.MediaAPI;
+import moe.sui.unimarket.datamodel.Post;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.fragment.ProductTitleFragment;
 
-class ImageHolder extends RecyclerView.ViewHolder {
-//    public PhotoView photoView;
-
-    CardView cardView;
-    ImageView imageView;
+class BannerItemHolder extends RecyclerView.ViewHolder {
+    PhotoView photoView;
     TextView textView;
 
-    ImageHolder(View view) {
+    BannerItemHolder(View view) {
         super(view);
 
-        cardView = (CardView) view;
-        imageView = view.findViewById(R.id.product_view);
-        textView =  view.findViewById(R.id.product_name);
+        photoView = view.findViewById(R.id.banner_photo);
+        textView =  view.findViewById(R.id.banner_title);
     }
 }
 
 
-public class ImageNetAdapter extends BannerAdapter<Product, ImageHolder> {
-
+public class MainBannerAdapter extends BannerAdapter<Post, BannerItemHolder> {
     private Context mContext;
-    public ImageNetAdapter(List<Product> mDatas) {
+    public MainBannerAdapter(List<Post> mDatas) {
         super(mDatas);
     }
 
     @Override
-    public ImageHolder onCreateHolder(ViewGroup parent, int viewType) {
-//        PhotoView imageView = new PhotoView(parent.getContext());
-//        //通过裁剪实现圆角
+    public BannerItemHolder onCreateHolder(ViewGroup parent, int viewType) {
+        PhotoView photoView = new PhotoView(parent.getContext());
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT);
-//        imageView.setLayoutParams(params);
-//        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//        return new ImageHolder(imageView);
         if (mContext == null) {
             mContext = parent.getContext();
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.product_item_card, parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.banner_item, parent,false);
         view.setLayoutParams(params);
-        return new ImageHolder(view);
+        return new BannerItemHolder(view);
     }
 
     @Override
-    public void onBindView(ImageHolder holder, Product data, int position, int size) {
-        holder.textView.setText(data.getName());
-        Glide.with(mContext).load(data.getImages().get(0).getSrc()).into(holder.imageView);
-//        Glide.with(holder.itemView)
-//                .load(data.getImages().get(0).getSrc())
-//                .into(holder.photoView);
-
+    public void onBindView(BannerItemHolder holder, Post data, int position, int size) {
+        holder.textView.setText(data.getTitle().getRendered());
+        Glide.with(mContext)
+                .load(data.getLink())
+                .into(holder.photoView);
+        holder.photoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 
 }
