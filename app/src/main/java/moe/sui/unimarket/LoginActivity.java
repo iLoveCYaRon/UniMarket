@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText username;     //存储读入用户名，密码
     private EditText password;
+    public boolean loginstatue;
     String token;
 
 
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Button button = findViewById(R.id.btn_login);
         username = findViewById(R.id.account);
         password = findViewById(R.id.pwd);
+        loginstatue=false;
         button.setOnClickListener(this);
     }
 
@@ -42,7 +44,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 login(user,pass);
-                finish();
+                //if(loginstatue==true)
+                   finish();
+               // else{
+                  //  Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+               // }
                 break;
             default:
                 break;
@@ -55,16 +61,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run(){
                 try {
+                    //token=auth(user,pass);
                     token=auth("Yui","xs&(!g$ekBOJU!OxJH");
                     if(token!=null) {
                         Message message = new Message();
                         message.what = 1;
                         message.obj = "登录成功";
+                        set_loginstatue(true);
                         handler.handleMessage(message);
                     }else{
                         Message message=new Message();
                         message.what=2;
                         message.obj = "登录失败";
+                        set_loginstatue(false);
                         handler.handleMessage(message);
                     }
 
@@ -81,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void handleMessage(Message msg){
             switch (msg.what){
                 case 1:
+                    set_loginstatue(true);
                     Looper.prepare();
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Looper.loop();
@@ -95,5 +105,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     };
+    public void set_loginstatue(boolean statue){
+        loginstatue=statue;
+    };
+
 
 }
