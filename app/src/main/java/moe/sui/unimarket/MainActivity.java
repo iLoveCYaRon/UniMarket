@@ -47,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
         searchView.setImageResource(R.drawable.main_search_bar);
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         topBar.setCenterView(searchView);
+        topBar.setTitle("优易");
+        // 左上角登陆按钮事件
+        topBar.addLeftImageButton(R.drawable.ic_account, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){
