@@ -71,13 +71,11 @@
                         style="?attr/buttonBarStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginTop="4dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_deal"
-                        android:drawablePadding="0dp"
                         android:text="@string/publish_deal"
-                        android:textColor="@color/colortext"
-                        android:textSize="10sp"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
@@ -88,14 +86,12 @@
                         style="?attr/buttonBarStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_book"
-                        android:drawablePadding="0dp"
                         android:text="@string/two_hand_textbook"
-                        android:textSize="10sp"
-                        android:textColor="@color/colortext"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/category_deal"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,12 +101,11 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_questionnaire"
                         android:text="@string/questionnaire_help"
-                        android:textSize="10sp"
-                        android:textColor="@color/colortext"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toEndOf="@+id/category_lecture"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,13 +115,11 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_lecture"
-                        android:drawablePadding="0dp"
                         android:text="@string/lecture_info"
-                        android:textSize="10sp"
-                        android:textColor="@color/colortext"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toEndOf="@+id/category_deal"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,27 +128,16 @@
                         style="?attr/buttonBarStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginTop="4dp"
                         android:layout_marginEnd="16dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_errend"
-                        android:drawablePadding="0dp"
                         android:text="@string/school_run"
-                        android:textSize="10sp"
-                        android:textColor="@color/colortext"
+                        android:textColor="@color/colorText"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/category_book"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/text_category"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="  商品分类"
-                    android:textSize="24sp"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
         </ScrollView>
 
