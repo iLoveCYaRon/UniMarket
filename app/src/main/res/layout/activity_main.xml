@@ -68,19 +68,18 @@
 
                     <Button
                         android:id="@+id/category_deal"
-                        style="@style/Widget.AppCompat.Button.Borderless"
+                        style="?attr/buttonBarStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"
                         android:background="@android:color/transparent"
                         android:drawableTop="@drawable/ic_main_category_deal"
                         android:drawablePadding="0dp"
                         android:text="@string/publish_deal"
-                        android:textSize="10sp"
                         android:textColor="@color/colortext"
+                        android:textSize="10sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.486"
+                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,7 +101,7 @@
 
                     <Button
                         android:id="@+id/category_questionnaire"
-                        style="@style/Widget.AppCompat.Button.Borderless"
+                        style="?attr/buttonBarStyle"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
                         android:layout_marginStart="16dp"
