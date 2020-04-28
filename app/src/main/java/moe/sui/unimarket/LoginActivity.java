@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.qmuiteam.qmui.widget.QMUITopBar;
+
 import java.io.IOException;
 
 import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
@@ -27,11 +29,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     //对按钮的各自初始化
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button button = findViewById(R.id.btn_login);
         username = findViewById(R.id.account);
         password = findViewById(R.id.pwd);
+
+        //设置Topbar
+        QMUITopBar topBar = findViewById(R.id.login_TopBar);
+        topBar.setTitle("登录");
+        topBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         button.setOnClickListener(this);
     }
 
