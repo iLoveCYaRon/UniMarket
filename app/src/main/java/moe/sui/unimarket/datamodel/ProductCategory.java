@@ -2,7 +2,7 @@ package moe.sui.unimarket.datamodel;
 
 import java.util.List;
 
-public class Category {
+public class ProductCategory {
 
     /**
      * id : 36
