@@ -55,7 +55,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 login(user,pass);
-                finish();
+                //if(loginstatue==true)
+                   finish();
+               // else{
+                  //  Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+               // }
                 break;
             default:
                 break;
@@ -68,11 +72,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run(){
                 try {
+                    //token=auth(user,pass);
                     token=auth("Yui","xs&(!g$ekBOJU!OxJH");
                     if(token!=null) {
                         Message message = new Message();
                         message.what = 1;
-                        message.obj = "登录成功";
+                        message.obj = "登录成功";                       
                         handler.handleMessage(message);
                     }else{
                         Message message=new Message();

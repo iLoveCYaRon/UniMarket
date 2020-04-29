@@ -16,6 +16,7 @@
         android:background="#FF3D41">
 
     </com.qmuiteam.qmui.widget.QMUITopBar>
+
     <ImageView
         android:layout_width="200dp"
         android:layout_height="60dp"
@@ -44,6 +45,10 @@
         android:hint="      用户名,邮箱或手机号"
         android:minWidth="220px"
         android:textColor="#484848"
+        android:layout_marginTop="150dp"
+        android:hint="      用户名,邮箱或手机号"
+        android:minWidth="220px"
+        android:textColor="#c4c4c4"
         android:textSize="36px" />
 
     <EditText
@@ -82,13 +87,6 @@
         android:layout_marginTop="365dp"
         android:text="手机验证码快捷登录"
         android:textColor="#FF3D41" />
-
-    <View
-        android:layout_width="130dp"
-        android:layout_height="1dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="385dp"
-        android:background="#FF3D41" />
 
     <TextView
         android:layout_width="wrap_content"

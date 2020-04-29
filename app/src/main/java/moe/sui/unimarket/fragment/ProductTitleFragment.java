@@ -45,15 +45,21 @@ public class ProductTitleFragment extends Fragment {
 
         class ViewHolder extends RecyclerView.ViewHolder {
             CardView cardView;
-            ImageView imageView;
-            TextView textView;
+            ImageView productPhoto;
+            TextView title;
+            TextView description;
+            TextView date;
+            TextView price;
+
 
             ViewHolder(View view) {
                 super(view);
-
                 cardView = (CardView) view;
-                imageView = view.findViewById(R.id.product_view);
-                textView =  view.findViewById(R.id.product_name);
+                productPhoto = view.findViewById(R.id.product_view);
+                title =  view.findViewById(R.id.textViewTitle);
+                description =  view.findViewById(R.id.textViewDesci);
+                date =  view.findViewById(R.id.textViewDate);
+                price =  view.findViewById(R.id.textViewPrice);
             }
         }
 
@@ -83,8 +89,11 @@ public class ProductTitleFragment extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder holder,int position) {
             Product product = mProductList.get(position);
-            holder.textView.setText(product.getName());
-            Glide.with(mContext).load(product.getImages().get(0).getSrc()).into(holder.imageView);
+            holder.title.setText(product.getName());
+            holder.price.setText(product.getPrice());
+            holder.date.setText(product.getDate_created());
+            holder.description.setText(product.getDescription());
+            Glide.with(mContext).load(product.getImages().get(0).getSrc()).into(holder.productPhoto);
         }
 
         @Override

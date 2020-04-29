@@ -51,7 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button);
+        topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ProductTitleActivity.class));
+            }
+        });
         ImageView searchView = new ImageView(getApplicationContext());
         searchView.setImageResource(R.drawable.main_search_bar);
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
