@@ -1,7 +1,9 @@
 package moe.sui.unimarket;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -72,7 +74,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if(token!=null) {
                         Message message = new Message();
                         message.what = 1;
-                        message.obj = "登录成功";                       
+                        message.obj = "登录成功";
+                        //存储token
+                        SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putString("令牌",token);
+                        editor.commit();
                         handler.handleMessage(message);
                     }else {
                         Message message=new Message();

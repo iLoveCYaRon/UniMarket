@@ -3,7 +3,9 @@ package moe.sui.unimarket;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +20,7 @@ import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.BannerUtils;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ import java.util.Objects;
 
 import moe.sui.unimarket.adapter.MainBannerAdapter;
 import moe.sui.unimarket.datamodel.APITest;
+import moe.sui.unimarket.datamodel.CustomerAuth;
 import moe.sui.unimarket.datamodel.Media;
 import moe.sui.unimarket.datamodel.MediaAPI;
 import moe.sui.unimarket.datamodel.PermissionsUtils;
@@ -33,6 +37,12 @@ import moe.sui.unimarket.datamodel.PostAPI;
 import moe.sui.unimarket.datamodel.Product;
 import moe.sui.unimarket.datamodel.ProductAPI;
 import moe.sui.unimarket.fragment.ProductTitleFragment;
+import okhttp3.MediaType;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
         topBar.setTitle("优易");
 
 
+        //判断用户令牌是否有效
+        SharedPreferences pref=getSharedPreferences("authtoken", Context.MODE_PRIVATE);
+        if (pref.contains("token") ){
+        SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
+        String user_token=sharedPreferences.getString("token","");
+        try {
+            if(CustomerAuth.authValidate(user_token))
+                Toast.makeText(MainActivity.this, "自动登录成功", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }}
+
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){
             @Override
@@ -85,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
+
 
 
     @SuppressLint("HandlerLeak")
