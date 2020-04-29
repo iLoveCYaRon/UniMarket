@@ -25,31 +25,34 @@
         android:src="@drawable/ic_logo" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="302dp"
         android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="125dp"
         android:src="@drawable/ic_logo_word" />
+
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="1dip"
+        android:layout_height="1dp"
         android:layout_marginTop="193dp"
-        android:background="#757474" />
+        android:background="#757474"
+        app:layout_anchor="@+id/imageView"
+        app:layout_anchorGravity="center" />
 
     <EditText
         android:id="@+id/account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="195dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="195dp"
         android:hint="      用户名,邮箱或手机号"
         android:minWidth="220px"
         android:textColor="#484848"
-        android:layout_marginTop="150dp"
-        android:hint="      用户名,邮箱或手机号"
-        android:minWidth="220px"
-        android:textColor="#c4c4c4"
-        android:textSize="36px" />
+        android:textSize="36px"
+        app:layout_anchor="@+id/view"
+        app:layout_anchorGravity="top|center" />
 
     <EditText
         android:id="@+id/pwd"
@@ -85,7 +88,9 @@
         android:layout_height="24dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="365dp"
-        android:text="手机验证码快捷登录"
+        android:autoLink="all"
+        android:text="@string/mobile_code_login"
+        android:textAllCaps="false"
         android:textColor="#FF3D41" />
 
     <TextView
