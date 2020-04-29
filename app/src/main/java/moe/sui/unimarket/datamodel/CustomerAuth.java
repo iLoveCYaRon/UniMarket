@@ -27,7 +27,8 @@ public class CustomerAuth {
 
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+                return null;
+                //throw new IOException("Unexpected code " + response);
             }
             //获取response中的token
             JSONObject rec = new JSONObject(response.body().string());

@@ -1,7 +1,9 @@
 package moe.sui.unimarket;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -55,11 +57,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 login(user,pass);
-                //if(loginstatue==true)
-                   finish();
-               // else{
-                  //  Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
-               // }
                 break;
             default:
                 break;
@@ -72,14 +69,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run(){
                 try {
-                    //token=auth(user,pass);
-                    token=auth("Yui","xs&(!g$ekBOJU!OxJH");
+                    token=auth(user,pass);
+                    //token=auth("Yui","xs&(!g$ekBOJU!OxJH");
                     if(token!=null) {
                         Message message = new Message();
                         message.what = 1;
-                        message.obj = "登录成功";                       
+                        message.obj = "登录成功";
+                        //存储token
+                        SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putString("令牌",token);
+                        editor.commit();
                         handler.handleMessage(message);
-                    }else{
+                    }else {
                         Message message=new Message();
                         message.what=2;
                         message.obj = "登录失败";
@@ -101,14 +103,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 case 1:
                     Looper.prepare();
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    finish();
                     Looper.loop();
                     break;
                 case 2:
-                    Looper.prepare();       //子线程调用toast会出错，需加Loopet.prepare() 和 Looper.loop()
-                    Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+                    Looper.prepare();
+                    Toast.makeText(LoginActivity.this, "登录失败,请重试", Toast.LENGTH_SHORT).show();
                     Looper.loop();
                     break;
-                default:break;
+                default: break;
             }
         }
 
