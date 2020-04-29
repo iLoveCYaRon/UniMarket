@@ -1,179 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedScrollLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:background="?attr/qmui_skin_support_color_background"
+        android:fitsSystemWindows="true">
 
-        <ScrollView
-            android:id="@+id/main_scorll"
+        <moe.sui.unimarket.module.UniPullRefreshLayout
+            android:id="@+id/pull_to_refresh"
             android:layout_width="match_parent"
-            android:layout_height="539dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_TopBar">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight">
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/main_scorll"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                android:layout_height="539dp"
+                android:background="@color/colorBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="0dp">
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                    <ImageView
-                        android:id="@+id/img_banner_background"
-                        android:layout_width="wrap_content"
-                        android:layout_height="180dp"
-                        android:scaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/main_rect_bar" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/img_banner_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/main_rect_bar" />
 
 
-                    <com.youth.banner.Banner
-                        android:id="@+id/banner"
-                        android:layout_width="0dp"
-                        android:layout_height="160dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@color/colorBackground"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </com.youth.banner.Banner>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:background="@color/colorBackground"
-                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintEnd_toEndOf="parent">
 
-                    </com.youth.banner.Banner>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <Button
+                            android:id="@+id/category_deal"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_deal"
+                            android:text="@string/publish_deal"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent">
+                        <Button
+                            android:id="@+id/category_book"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_book"
+                            android:text="@string/two_hand_textbook"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/category_deal"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
-                        android:id="@+id/category_deal"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_deal"
-                        android:text="@string/publish_deal"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <Button
+                            android:id="@+id/category_questionnaire"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_questionnaire"
+                            android:text="@string/questionnaire_help"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/category_lecture"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
-                        android:id="@+id/category_book"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_book"
-                        android:text="@string/two_hand_textbook"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/category_deal"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <Button
+                            android:id="@+id/category_lecture"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_lecture"
+                            android:text="@string/lecture_info"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/category_deal"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <Button
-                        android:id="@+id/category_questionnaire"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_questionnaire"
-                        android:text="@string/questionnaire_help"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/category_lecture"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <Button
+                            android:id="@+id/category_errend"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_errend"
+                            android:text="@string/school_run"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/category_book"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <Button
-                        android:id="@+id/category_lecture"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_lecture"
-                        android:text="@string/lecture_info"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/category_deal"
-                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+            </ScrollView>
+        </moe.sui.unimarket.module.UniPullRefreshLayout>>
+    </FrameLayout>
 
-                    <Button
-                        android:id="@+id/category_errend"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_errend"
-                        android:text="@string/school_run"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/category_book"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/main_TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_scorll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qmui_bottomDividerColor="@color/colorBackground"
+        app:qmui_bottomDividerHeight="0px"
+        app:qmui_topbar_image_btn_height="?attr/qmui_topbar_height"
+        app:qmui_topbar_image_btn_width="25dp"
+        app:qmui_topbar_subtitle_text_size="0sp"
+        app:qmui_topbar_title_color="@color/colorBackground"
+        app:qmui_topbar_title_gravity="center"
+        app:qmui_topbar_title_text_size="0sp"
+        app:qmui_topbar_title_text_size_with_subtitle="0sp">
 
-            </LinearLayout>
-        </ScrollView>
+    </com.qmuiteam.qmui.widget.QMUITopBar>
 
-        <com.qmuiteam.qmui.widget.QMUITopBar
-            android:id="@+id/main_TopBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/qmui_topbar_height"
-            android:background="@color/colorPrimary"
-            android:fitsSystemWindows="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_scorll"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:qmui_bottomDividerColor="@color/colorBackground"
-            app:qmui_bottomDividerHeight="0px"
-            app:qmui_topbar_image_btn_height="?attr/qmui_topbar_height"
-            app:qmui_topbar_image_btn_width="25dp"
-            app:qmui_topbar_subtitle_text_size="0sp"
-            app:qmui_topbar_title_color="@color/colorBackground"
-            app:qmui_topbar_title_gravity="center"
-            app:qmui_topbar_title_text_size="0sp"
-            app:qmui_topbar_title_text_size_with_subtitle="0sp">
-
-        </com.qmuiteam.qmui.widget.QMUITopBar>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedBottomRecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedBottomRecyclerView>
-
-</com.qmuiteam.qmui.nestedScroll.QMUIContinuousNestedScrollLayout>
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
 
 
 
