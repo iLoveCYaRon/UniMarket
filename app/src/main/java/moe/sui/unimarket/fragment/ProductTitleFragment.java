@@ -8,9 +8,11 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -18,8 +20,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.qmuiteam.qmui.skin.QMUISkinManager;
+import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.popup.QMUIPopups;
+import com.qmuiteam.qmui.widget.popup.QMUIQuickAction;
 import com.youth.banner.Banner;
 
 import org.jetbrains.annotations.NotNull;
@@ -47,19 +53,18 @@ public class ProductTitleFragment extends Fragment {
             CardView cardView;
             ImageView productPhoto;
             TextView title;
-            TextView description;
-            TextView date;
+            TextView shortDescription;
             TextView price;
-
+            ImageButton option;
 
             ViewHolder(View view) {
                 super(view);
                 cardView = (CardView) view;
                 productPhoto = view.findViewById(R.id.product_view);
-                title =  view.findViewById(R.id.textViewTitle);
-                description =  view.findViewById(R.id.textViewDesci);
-                date =  view.findViewById(R.id.textViewDate);
-                price =  view.findViewById(R.id.textViewPrice);
+                title = view.findViewById(R.id.textViewTitle);
+                shortDescription = view.findViewById(R.id.textViewDesci);
+                price = view.findViewById(R.id.textViewPrice);
+                option = view.findViewById(R.id.buttonOption);
             }
         }
 
@@ -89,11 +94,59 @@ public class ProductTitleFragment extends Fragment {
         @Override
         public void onBindViewHolder(ViewHolder holder,int position) {
             Product product = mProductList.get(position);
+
+            // 设置卡片文本
             holder.title.setText(product.getName());
             holder.price.setText(product.getPrice());
-            holder.date.setText(product.getDate_created());
-            holder.description.setText(product.getDescription());
+            String description =  product.getShort_description();
+            description = description.substring(3, description.length()-5);
+            holder.shortDescription.setText(description);
+
+            // 设置按钮弹出菜单
+            holder.option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    QMUIPopups.quickAction(getContext(),
+                            QMUIDisplayHelper.dp2px(getContext(), 56),
+                            QMUIDisplayHelper.dp2px(getContext(), 56))
+                            .shadow(true)
+                            .shadowElevation(50, 1f)
+                            .skinManager(QMUISkinManager.defaultInstance(getContext()))
+                            .edgeProtection(QMUIDisplayHelper.dp2px(getContext(), 10))
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("复制").onClick(
+                                    new QMUIQuickAction.OnClickListener() {
+                                        @Override
+                                        public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {
+                                            quickAction.dismiss();
+                                            Toast.makeText(getContext(), "复制成功", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                            ))
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("划线").onClick(
+                                    new QMUIQuickAction.OnClickListener() {
+                                        @Override
+                                        public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {
+                                            quickAction.dismiss();
+                                            Toast.makeText(getContext(), "划线成功", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                            ))
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("分享").onClick(
+                                    new QMUIQuickAction.OnClickListener() {
+                                        @Override
+                                        public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {
+                                            quickAction.dismiss();
+                                            Toast.makeText(getContext(), "分享成功", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                            ))
+                            .show(v);
+                }
+            });
+
+            // 加载图片
             Glide.with(mContext).load(product.getImages().get(0).getSrc()).into(holder.productPhoto);
+
         }
 
         @Override
@@ -127,7 +180,7 @@ public class ProductTitleFragment extends Fragment {
         topBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().finish();
+                getActivity().onBackPressed();
             }
         });
         return view;

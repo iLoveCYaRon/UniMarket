@@ -144,7 +144,7 @@
         <com.qmuiteam.qmui.widget.QMUITopBar
             android:id="@+id/main_TopBar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="?attr/qmui_topbar_height"
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
             android:paddingLeft="20dp"
@@ -155,7 +155,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:qmui_bottomDividerColor="@color/colorBackground"
             app:qmui_bottomDividerHeight="0px"
-            app:qmui_topbar_image_btn_height="60dp"
+            app:qmui_topbar_image_btn_height="?attr/qmui_topbar_height"
             app:qmui_topbar_image_btn_width="25dp"
             app:qmui_topbar_subtitle_text_size="0sp"
             app:qmui_topbar_title_color="@color/colorBackground"
