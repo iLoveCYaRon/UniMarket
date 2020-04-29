@@ -13,7 +13,7 @@ public class Config {
     public static final String KEY = "ck_42acbbd45b697dd8e6d06d4f656b476d95b30cc6";
     public static final String SECRET = "cs_7befbb714ccb81ed0fcf03cc7e96ea9ee4a90611";
     public static final MediaType JSON = MediaType.parse("application/json,text/plain");
-    public static final String SUPERTOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2hvcC5zdWkubW9lIiwiaWF0IjoxNTg3NTU2NDU3LCJuYmYiOjE1ODc1NTY0NTcsImV4cCI6MTU4ODE2MTI1NywiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.sNxJpyiDc3Jg0vFQhGS3GcmiH2DdCswMhQ4zpzDrafU";
+    public static final String SUPERTOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2hvcC5zdWkubW9lIiwiaWF0IjoxNTg4MTY1NzA5LCJuYmYiOjE1ODgxNjU3MDksImV4cCI6MTU4ODc3MDUwOSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.aHolIjkN5Ym4CQN7vRQNXL-drvRjF2yqHJtuUOCddH0";
 
     public static RequestBody createBodyFromJson(String json) {
 
