@@ -13,15 +13,15 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CategoryAPI {
-    private static String TAG = "CategoryAPI";
-    private static final String CategoryPATH = "/wp-json/wc/v3/products/categories";
+public class ProductTagAPI {
+    private static String TAG = "ProductTagAPI";
+    private static final String TAGPATH = "/wp-json/wc/v3/products/tags";
     private static final OkHttpClient client = new OkHttpClient();
     private static final Gson gson = new Gson();
 
-    public static List<Category> listCategory(){
+    public static List<ProductTag> listTag(){
         Request request = new Request.Builder()
-                .url(Config.SITE + CategoryPATH)
+                .url(Config.SITE + TAGPATH)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Content-Type", "text/plain")
                 .addHeader("Authorization", Config.SUPERTOKEN)
@@ -30,7 +30,7 @@ public class CategoryAPI {
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) Log.e(TAG, "listCategory: "+ Objects.requireNonNull(response.body()).string());
             // 如果成功返回Category数组
-            return gson.fromJson(Objects.requireNonNull(response.body()).string(), new TypeToken<List<Category>>(){}.getType());
+            return gson.fromJson(Objects.requireNonNull(response.body()).string(), new TypeToken<List<ProductTag>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
         }
