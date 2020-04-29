@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.qmuiteam.qmui.widget.QMUITopBar;
+
 import java.io.IOException;
 
 import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
@@ -21,19 +23,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText username;     //存储读入用户名，密码
     private EditText password;
-    public boolean loginstatue;
     String token;
 
 
     @Override
     //对按钮的各自初始化
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Button button = findViewById(R.id.btn_login);
         username = findViewById(R.id.account);
         password = findViewById(R.id.pwd);
-        loginstatue=false;
+
+        //设置Topbar
+        QMUITopBar topBar = findViewById(R.id.login_TopBar);
+        topBar.setTitle("登录");
+        topBar.addLeftBackImageButton().setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         button.setOnClickListener(this);
     }
 
@@ -66,14 +77,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if(token!=null) {
                         Message message = new Message();
                         message.what = 1;
-                        message.obj = "登录成功";
-                        set_loginstatue(true);
+                        message.obj = "登录成功";                       
                         handler.handleMessage(message);
                     }else{
                         Message message=new Message();
                         message.what=2;
                         message.obj = "登录失败";
-                        set_loginstatue(false);
                         handler.handleMessage(message);
                     }
 
@@ -90,7 +99,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         public void handleMessage(Message msg){
             switch (msg.what){
                 case 1:
-                    set_loginstatue(true);
                     Looper.prepare();
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Looper.loop();
@@ -105,9 +113,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     };
-    public void set_loginstatue(boolean statue){
-        loginstatue=statue;
-    };
-
 
 }

@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:topbar="http://schemas.android.com/tools"
     android:background="@color/colorBackground"
     android:orientation="horizontal"
     android_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/login_TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:qmui_topbar_title_color="#F3EFEF"
+        android:background="#FF3D41">
+
+    </com.qmuiteam.qmui.widget.QMUITopBar>
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="87dp"
         android:src="@drawable/ic_logo" />
 
     <ImageView
         android:layout_width="302dp"
         android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="125dp"
         android:src="@drawable/ic_logo_word" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1dip"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="193dp"
         android:background="#757474" />
 
     <EditText
         android:id="@+id/account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="195dp"
+        android:layout_gravity="center_horizontal"
+        android:hint="      用户名,邮箱或手机号"
+        android:minWidth="220px"
+        android:textColor="#484848"
         android:layout_marginTop="150dp"
         android:hint="      用户名,邮箱或手机号"
         android:minWidth="220px"
@@ -42,16 +55,17 @@
         android:id="@+id/pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:hint="      请输入密码"
-        android:textColor="#c4c4c4"
-        android:layout_marginTop="186dp"
+        android:textColor="#484848"
+        android:layout_marginTop="231dp"
         android:inputType="textPassword"
         android:minWidth="220px"
         android:textSize="36px" />
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
         android:id="@+id/btn_login"
-        android:layout_width="360dp"
+        android:layout_width="366dp"
         android:layout_height="42dp"
         android:layout_centerInParent="true"
         android:paddingLeft="10dp"
@@ -59,10 +73,10 @@
         android:paddingRight="16dp"
         android:paddingBottom="5dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="295dp"
         android:text="登录"
-        app:qmui_backgroundColor="#F81515"
-        app:qmui_borderColor="#F81515"
+        app:qmui_backgroundColor="#FF3D41"
+        app:qmui_borderColor="#FF3D41"
         android:textColor="#F3EFEF"
         app:qmui_isRadiusAdjustBounds="true" />
 
@@ -70,15 +84,15 @@
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="365dp"
         android:text="手机验证码快捷登录"
-        android:textColor="#c4c4c4" />
+        android:textColor="#FF3D41" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="540dp"
         android:text="社交账号登录"
         android:textColor="#c4c4c4" />
 
