@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/qmui_config_color_white">
+    android:background="@color/colorBackground">
 
     <com.qmuiteam.qmui.widget.QMUIAppBarLayout
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:minHeight="?attr/qmui_topbar_height"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:qmui_collapsedTitleGravity="center"
-            app:qmui_contentScrim="@color/colorPrimaryDark"
+            app:qmui_contentScrim="@color/colorPrimary"
             app:qmui_expandedTitleGravity="left|bottom"
             app:qmui_expandedTitleMarginBottom="20dp"
             app:qmui_expandedTitleMarginStart="20dp"
@@ -47,7 +46,7 @@
                 app:qmui_bottomDividerHeight="0px"
                 app:qmui_layout_collapseMode="pin"
                 app:qmui_topbar_title_color="#FFFFFF"
-                app:qmui_topbar_title_container_padding_horizontal="12sp" />
+                app:qmui_topbar_title_container_padding_horizontal="16sp" />
 
         </com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout>
 
