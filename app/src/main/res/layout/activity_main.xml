@@ -137,7 +137,38 @@
                         app:layout_constraintEnd_toStartOf="@+id/category_book"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                <moe.sui.unimarket.adapter.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp">
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="阿柴傻逼" />
 
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="nmsl" />
+
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="不来王" />
+
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="天天谈恋爱女朋友" />
+
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="这玩意怎么这么难" />
+
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="设计师不用写代码就bb" />
+
+                    <TextView
+                        style="@style/text_flag_01"
+                        android:text="什么时候有聚" />
+                </moe.sui.unimarket.adapter.FlowLayout>
             </LinearLayout>
         </ScrollView>
 
