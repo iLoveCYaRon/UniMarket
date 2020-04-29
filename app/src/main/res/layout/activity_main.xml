@@ -2,8 +2,7 @@
 <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -32,6 +31,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
@@ -76,156 +76,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
-
-                    </com.youth.banner.Banner>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                    <Button
-                        android:id="@+id/category_deal"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_deal"
-                        android:text="@string/publish_deal"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/category_book"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_book"
-                        android:text="@string/two_hand_textbook"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/category_deal"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/category_questionnaire"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_questionnaire"
-                        android:text="@string/questionnaire_help"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/category_lecture"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/category_lecture"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_lecture"
-                        android:text="@string/lecture_info"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/category_deal"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/category_errend"
-                        style="?attr/buttonBarStyle"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginEnd="16dp"
-                        android:background="@android:color/transparent"
-                        android:drawableTop="@drawable/ic_main_category_errend"
-                        android:text="@string/school_run"
-                        android:textColor="@color/colorText"
-                        android:textSize="12sp"
-                        app:layout_constraintEnd_toStartOf="@+id/category_book"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <moe.sui.unimarket.adapter.FlowLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16dp">
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn1"
-                        android:text="#王者代练" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn2"
-                        android:text="#家乡の机械键盘" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn3"
-                        android:text="#工业设计" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn4"
-                        android:text="#文具" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn5"
-                        android:text="#这玩意怎么这么难" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn6"
-                        android:text="#设计师不用写代码就bb" />
-
-                    <Button
-                        style="@style/text_flag_01"
-                        android:id="@+id/btn7"
-                        android:text="#什么时候有聚" />
-
-                </moe.sui.unimarket.adapter.FlowLayout>
-            </LinearLayout>
-        </ScrollView>
-
-        <com.qmuiteam.qmui.widget.QMUITopBar
-            android:id="@+id/main_TopBar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorPrimary"
-            android:fitsSystemWindows="true"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/main_scorll"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:qmui_bottomDividerColor="@color/colorBackground"
-            app:qmui_bottomDividerHeight="0px"
-            app:qmui_topbar_image_btn_height="60dp"
-            app:qmui_topbar_image_btn_width="25dp"
-            app:qmui_topbar_subtitle_text_size="0sp"
-            app:qmui_topbar_title_color="@color/colorBackground"
-            app:qmui_topbar_title_gravity="center"
-            app:qmui_topbar_title_text_size="0sp"
-            app:qmui_topbar_title_text_size_with_subtitle="0sp">
-
-        </com.qmuiteam.qmui.widget.QMUITopBar>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                        app:layout_constraintEnd_toEndOf="parent">
 
                         <Button
                             android:id="@+id/category_deal"
@@ -299,9 +149,54 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <moe.sui.unimarket.adapter.FlowLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <Button
+                            android:id="@+id/btn1"
+                            style="@style/text_flag_01"
+                            android:text="#王者代练" />
+
+                        <Button
+                            android:id="@+id/btn2"
+                            style="@style/text_flag_01"
+                            android:text="#家乡の机械键盘" />
+
+                        <Button
+                            android:id="@+id/btn3"
+                            style="@style/text_flag_01"
+                            android:text="#工业设计" />
+
+                        <Button
+                            android:id="@+id/btn4"
+                            style="@style/text_flag_01"
+                            android:text="#文具" />
+
+                        <Button
+                            android:id="@+id/btn5"
+                            style="@style/text_flag_01"
+                            android:text="#这玩意怎么这么难" />
+
+                        <Button
+                            android:id="@+id/btn6"
+                            style="@style/text_flag_01"
+                            android:text="#设计师不用写代码就bb" />
+
+                        <Button
+                            android:id="@+id/btn7"
+                            style="@style/text_flag_01"
+                            android:text="#什么时候有聚" />
+
+                    </moe.sui.unimarket.adapter.FlowLayout>
+
                 </LinearLayout>
+
+
             </ScrollView>
-        </moe.sui.unimarket.module.UniPullRefreshLayout>>
+        </moe.sui.unimarket.module.UniPullRefreshLayout>
     </FrameLayout>
 
     <com.qmuiteam.qmui.widget.QMUITopBar
