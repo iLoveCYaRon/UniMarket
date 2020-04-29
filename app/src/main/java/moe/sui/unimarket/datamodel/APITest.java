@@ -28,7 +28,7 @@ public class APITest {
 //        if (ProductAPI.listProduct() == null)
 //            Log.e("APITest", "run: Failed");
 
-//        if(CategoryAPI.listCategory() == null)
+//        if(ProductCategoryAPI.listCategory() == null)
 //            Log.e("APITest", "run: Failed");
 //        else
 //            Log.e("APITest", "run: Succeed");

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
 import com.youth.banner.Banner;
 
 import com.youth.banner.config.IndicatorConfig;
@@ -61,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         searchView.setImageResource(R.drawable.main_search_bar);
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         topBar.setCenterView(searchView);
-        topBar.setTitle("优易");
+
+        // 下拉刷新
+        QMUIPullRefreshLayout pullRefresh = findViewById(R.id.pull_to_refresh);
 
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
