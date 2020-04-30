@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.RunnableFuture;
 
 import moe.sui.unimarket.adapter.MainBannerAdapter;
 import moe.sui.unimarket.datamodel.APITest;
@@ -78,16 +80,29 @@ public class MainActivity extends AppCompatActivity {
 
 
         //判断用户令牌是否有效
-        SharedPreferences pref=getSharedPreferences("authtoken", Context.MODE_PRIVATE);
-        if (pref.contains("token") ){
-        SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
-        String user_token=sharedPreferences.getString("token","");
-        try {
-            if(CustomerAuth.authValidate(user_token))
-                Toast.makeText(MainActivity.this, "自动登录成功", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }}
+       // SharedPreferences pref=getSharedPreferences("authtoken", Context.MODE_PRIVATE);
+        //if (pref.contains("token") ){
+        SharedPreferences sharedPreferences =getSharedPreferences("token", Context.MODE_PRIVATE);
+        final String user_token=sharedPreferences.getString("token",null);
+        if(user_token!=null){
+            //网络请求需要在线程上进行
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if(CustomerAuth.authValidate(user_token)){
+                            //线程中不能直接调用toast
+                            Looper.prepare();
+                            Toast.makeText(MainActivity.this, "自动登录成功", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+     }
 
         // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
         new Thread(new Runnable(){

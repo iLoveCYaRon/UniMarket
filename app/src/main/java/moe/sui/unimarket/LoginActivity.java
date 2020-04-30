@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         //存储token
                         SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor=sharedPreferences.edit();
-                        editor.putString("令牌",token);
+                        editor.putString("token",token);
                         editor.commit();
                         handler.handleMessage(message);
                     }else {
