@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }

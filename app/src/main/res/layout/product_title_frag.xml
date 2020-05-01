@@ -8,7 +8,7 @@
     <com.qmuiteam.qmui.widget.QMUIAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/qmui_s_transparent"
+        android:background="@color/colorBackground"
         android:fitsSystemWindows="true">
 
         <com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout
