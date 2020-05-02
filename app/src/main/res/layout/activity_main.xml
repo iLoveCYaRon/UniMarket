@@ -150,11 +150,94 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+                    <LinearLayout
+                        android:id="@+id/category_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/text_underline"
+                            android:text="商品种类"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+                        <Button
+                            style="@style/text_flag_01"
+                            android:background="@drawable/flag_02"
+                            android:text="查看全部"
+                            android:textSize="10sp"
+                            />
+                    </LinearLayout>
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            >
+
+                            <Button
+                                android:id="@+id/category1"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category1"
+                                android:text="二手文具&#10;本子绘图工具"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/category2"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category2"
+                                android:text="体育器材&#10;体育课使用"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                />
+                            <Button
+                                android:id="@+id/category3"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category3"
+                                android:text="KFC&#10;代金券折扣券"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                />
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
                     <moe.sui.unimarket.adapter.FlowLayout
                         android:id="@+id/FlowLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
                         app:layout_constraintStart_toStartOf="parent">
 
                         <Button
@@ -193,83 +276,6 @@
                             android:text="#什么时候有聚" />
 
                     </moe.sui.unimarket.adapter.FlowLayout>
-                    <LinearLayout
-                        android:id="@+id/category_linearlayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        app:layout_constraintTop_toTopOf="@+id/FlowLayout"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="商品种类"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="6dp"/>
-                        <Button
-                            style="@style/text_flag_01"
-                            android:background="@drawable/flag_02"
-                            android:text="查看全部"
-                            />
-                    </LinearLayout>
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="@+id/category_linearlayout"
-                        android:layout_marginStart="16dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            >
-                            <Button
-                                android:id="@+id/category1"
-                                style="?attr/buttonBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/flag_03"
-                                android:drawableLeft="@drawable/ic_main_category_errend"
-                                android:text="@string/school_run"
-                                android:textColor="@color/colorText"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                />
-                            <Button
-                                android:id="@+id/category2"
-                                style="?attr/buttonBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/flag_03"
-                                android:drawableLeft="@drawable/ic_main_category_questionnaire"
-                                android:text="@string/questionnaire_help"
-                                android:textColor="@color/colorText"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                />
-                            <Button
-                                android:id="@+id/category3"
-                                style="?attr/buttonBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="60dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/flag_03"
-                                android:drawableLeft="@drawable/ic_main_category_lecture"
-                                android:text="@string/lecture_info"
-                                android:textColor="@color/colorText"
-                                android:textSize="12sp"
-                                android:textStyle="bold"
-                                />
-
-                        </LinearLayout>
-
-                    </ScrollView>
                 </LinearLayout>
 
 
