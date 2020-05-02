@@ -57,13 +57,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //判断用户令牌是否有效
+        // SharedPreferences pref=getSharedPreferences("authtoken", Context.MODE_PRIVATE);
+        //if (pref.contains("token") ){
+        SharedPreferences sharedPreferences =getSharedPreferences("token", Context.MODE_PRIVATE);
+        final String user_token=sharedPreferences.getString("token",null);
+        if(user_token!=null){
+            //网络请求需要在线程上进行
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if(CustomerAuth.authValidate(user_token)){
+                            //线程中不能直接调用toast
+                            Looper.prepare();
+                            LoginActivity.setstatue(true);
+                            Toast.makeText(MainActivity.this, "自动登录成功", Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
+
         // TopBar设置
         QMUITopBar topBar = findViewById(R.id.main_TopBar);
         topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
+                if(LoginActivity.isLogin_statue(false)){
+                    Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(intent);}
+                else{
+                    Intent intent=new Intent(MainActivity.this,PersonalPageActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         topBar.addRightImageButton(R.drawable.ic_main_search, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
@@ -101,38 +132,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //判断用户令牌是否有效
-       // SharedPreferences pref=getSharedPreferences("authtoken", Context.MODE_PRIVATE);
-        //if (pref.contains("token") ){
-        SharedPreferences sharedPreferences =getSharedPreferences("token", Context.MODE_PRIVATE);
-        final String user_token=sharedPreferences.getString("token",null);
-        if(user_token!=null){
-            //网络请求需要在线程上进行
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        if(CustomerAuth.authValidate(user_token)){
-                            //线程中不能直接调用toast
-                            Looper.prepare();
-                            Toast.makeText(MainActivity.this, "自动登录成功", Toast.LENGTH_SHORT).show();
-                            Looper.loop();
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
-        }
-
-
         Message msg = new Message();
         msg.what = 1;
         handler.sendMessage(msg);
-
-
-
 
     }
 
