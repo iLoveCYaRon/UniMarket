@@ -1,10 +1,16 @@
 package moe.sui.unimarket.datamodel;
 
 import com.google.gson.Gson;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
 
 import java.io.Serializable;
 import java.util.List;
 
+import moe.sui.unimarket.adapter.UniMarketDatabase;
+
+@Table(database = UniMarketDatabase.class)
 public class Post implements Serializable {
     /**
      * id : 1
@@ -191,7 +197,41 @@ public class Post implements Serializable {
         this.tags = tags;
     }
 
+    @PrimaryKey
     private int id;
+
+    public String getTitleRendered() {
+        return titleRendered;
+    }
+
+    public void setTitleRendered(String titleRendered) {
+        this.titleRendered = titleRendered;
+    }
+
+    public String getContentRendered() {
+        return contentRendered;
+    }
+
+    public void setContentRendered(String contentRendered) {
+        this.contentRendered = contentRendered;
+    }
+
+    public String getFeatMediaLink() {
+        return featMediaLink;
+    }
+
+    public void setFeatMediaLink(String featMediaLink) {
+        this.featMediaLink = featMediaLink;
+    }
+
+    @Column
+    private String titleRendered;
+
+    @Column
+    private String contentRendered;
+
+    @Column
+    private String featMediaLink;
     private String date;
     private String date_gmt;
     private String modified;
@@ -199,6 +239,8 @@ public class Post implements Serializable {
     private String status;
     private String type;
     private String link;
+
+
     private TitleBean title;
     private ContentBean content;
     private ExcerptBean excerpt;
@@ -245,6 +287,7 @@ public class Post implements Serializable {
          * rendered : 世界，您好！
          */
 
+        @PrimaryKey
         private String rendered;
 
         public String getRendered() {
