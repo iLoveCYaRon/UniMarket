@@ -8,7 +8,7 @@
     <com.qmuiteam.qmui.widget.QMUIAppBarLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@color/qmui_s_transparent"
+        android:background="@color/colorBackground"
         android:fitsSystemWindows="true">
 
         <com.qmuiteam.qmui.widget.QMUICollapsingTopBarLayout
@@ -31,11 +31,12 @@
                 android:contentDescription="全部商品"
                 android:fitsSystemWindows="false"
                 android:scaleType="centerCrop"
-                android:src="@drawable/main_visual_2"
+                android:src="@drawable/product_title_header"
                 app:qmui_border_width="1px"
                 app:qmui_corner_radius="0dp"
                 app:qmui_layout_collapseMode="parallax"
-                app:qmui_layout_collapseParallaxMultiplier="0.7" />
+                app:qmui_layout_collapseParallaxMultiplier="0.7"
+                app:srcCompat="@drawable/product_title_header" />
 
             <com.qmuiteam.qmui.widget.QMUITopBar
                 android:id="@+id/topbar"

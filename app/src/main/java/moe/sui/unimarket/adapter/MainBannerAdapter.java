@@ -64,9 +64,9 @@ public class MainBannerAdapter extends BannerAdapter<Post, BannerItemHolder> {
 
     @Override
     public void onBindView(BannerItemHolder holder, Post data, int position, int size) {
-        holder.textView.setText(data.getTitle().getRendered());
+        holder.textView.setText(data.getTitleRendered());
         Glide.with(mContext)
-                .load(data.getLink())
+                .load(data.getFeatMediaLink())
                 .into(holder.photoView);
         holder.photoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
