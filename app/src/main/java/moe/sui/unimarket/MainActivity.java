@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.pullRefreshLayout.QMUIPullRefreshLayout;
+import com.raizlabs.android.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.ModelAdapter;
 import com.youth.banner.Banner;
 
 import com.youth.banner.config.IndicatorConfig;
@@ -59,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent=new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
@@ -75,8 +77,28 @@ public class MainActivity extends AppCompatActivity {
         searchView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         topBar.setCenterView(searchView);
 
-        // 下拉刷新
-        QMUIPullRefreshLayout pullRefresh = findViewById(R.id.pull_to_refresh);
+        final QMUIPullRefreshLayout pullRefresh = findViewById(R.id.pull_to_refresh);
+        pullRefresh.setOnPullListener(new QMUIPullRefreshLayout.OnPullListener() {
+            @Override
+            public void onMoveTarget(int offset) {
+
+            }
+
+            @Override
+            public void onMoveRefreshView(int offset) {
+
+            }
+
+            @Override
+            public void onRefresh() {
+                pullRefresh.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateDatabase();
+                    }
+                }, 2000);
+            }
+        });
 
 
         //判断用户令牌是否有效
@@ -102,31 +124,44 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }).start();
-     }
+        }
 
-        // 在Android 4.0以上，网络连接不能放在主线程上，不+然就会报错android.os.NetworkOnMainThreadException
+
+        Message msg = new Message();
+        msg.what = 1;
+        handler.sendMessage(msg);
+
+
+
+
+    }
+
+
+    private void updateDatabase() {
+
+        // 获取Post, 获取完存放到SQLite数据库并发送Msg请求刷新UI
         new Thread(new Runnable(){
             @Override
             public void run() {
-                APITest.run();
-
+                ModelAdapter<Post> adapter = FlowManager.getModelAdapter(Post.class);
                 List<Post> postList = PostAPI.listPost();
                 assert postList != null;
                 for(Post post : postList) {
                     Media media = MediaAPI.getMedia(post.getFeatured_media());
-                    post.setLink(media.getSource_url());;
+                    post.setFeatMediaLink(media.getSource_url());
+                    post.setContentRendered(post.getContent().getRendered());
+                    post.setTitleRendered(post.getTitle().getRendered());
+                    if(!adapter.exists(post))
+                        adapter.insert(post);
                 }
+
                 Message msg = new Message();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("postList", (Serializable) postList);
-                msg.setData(bundle);
                 msg.what = 1;
                 handler.sendMessage(msg);
             }
         }).start();
+
     }
-
-
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler()
@@ -139,8 +174,13 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     // 1代表图片列表加载完毕 可以开始载入图片和轮播
                     Banner banner = findViewById(R.id.banner);
+
+                    List<Post> users = SQLite.select()
+                            .from(Post.class)
+                            .queryList();
+
                     // 开始轮播
-                    banner.setAdapter(new MainBannerAdapter((ArrayList<Post>) msg.getData().getSerializable("postList")))
+                    banner.setAdapter(new MainBannerAdapter(users))
                             .setBannerRound2(BannerUtils.dp2px(6))
                             .setIndicator(new CircleIndicator(getApplicationContext()))
                             .setIndicatorGravity(IndicatorConfig.Direction.RIGHT)
@@ -150,6 +190,9 @@ public class MainActivity extends AppCompatActivity {
                             .setIndicatorSelectedWidth((int) BannerUtils.dp2px(6))
                             .setIndicatorMargins(new IndicatorConfig.Margins((int) BannerUtils.dp2px(12)))
                             .start();
+                    QMUIPullRefreshLayout pullRefresh = findViewById(R.id.pull_to_refresh);
+                    pullRefresh.finishRefresh();
+
 
                     break;
             }
