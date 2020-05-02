@@ -23,6 +23,7 @@ import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static boolean login_statue;
     private EditText username;     //存储读入用户名，密码
     private EditText password;
     String token;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Button button = findViewById(R.id.btn_login);
         username = findViewById(R.id.account);
         password = findViewById(R.id.pwd);
+        setstatue(false);
 
         //设置Topbar
         QMUITopBar topBar = findViewById(R.id.login_TopBar);
@@ -75,6 +77,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Message message = new Message();
                         message.what = 1;
                         message.obj = "登录成功";
+                        setstatue(true);
                         //存储token
                         SharedPreferences sharedPreferences=getSharedPreferences("token", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor=sharedPreferences.edit();
@@ -116,5 +119,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
     };
+    public static void setstatue(boolean statue){
+        login_statue=statue;
+    }
 
+    public static boolean isLogin_statue(boolean statue){
+        return login_statue == statue;
+    }
 }
