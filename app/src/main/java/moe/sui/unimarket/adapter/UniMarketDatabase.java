@@ -7,5 +7,5 @@ public class UniMarketDatabase {
 
     public static final String NAME = "AppDatabase";
 
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
 }

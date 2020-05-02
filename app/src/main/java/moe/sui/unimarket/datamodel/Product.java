@@ -1,8 +1,15 @@
 package moe.sui.unimarket.datamodel;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+
 import java.io.Serializable;
 import java.util.List;
 
+import moe.sui.unimarket.adapter.UniMarketDatabase;
+
+@Table(database = UniMarketDatabase.class)
 public class Product implements Serializable {
     /**
      * id : 23
@@ -73,7 +80,9 @@ public class Product implements Serializable {
      * _links : {"self":[{"href":"https://shop.sui.moe/index.php/wp-json/wc/v3/products/23"}],"collection":[{"href":"https://shop.sui.moe/index.php/wp-json/wc/v3/products"}]}
      */
 
+    @PrimaryKey
     private int id;
+    @Column
     private String name;
     private String slug;
     private String permalink;
@@ -85,9 +94,12 @@ public class Product implements Serializable {
     private String status;
     private boolean featured;
     private String catalog_visibility;
+    @Column
     private String description;
+    @Column
     private String short_description;
     private String sku;
+    @Column
     private String price;
     private String regular_price;
     private String sale_price;
@@ -133,6 +145,17 @@ public class Product implements Serializable {
     private List<ImagesBean> images;
     private List<AttributesBean> attributes;
     private List<MetaDataBean> meta_data;
+
+    @Column
+    private String titleImageLink;
+
+    public String getTitleImageLink() {
+        return titleImageLink;
+    }
+
+    public void setTitleImageLink(String titleImageLink) {
+        this.titleImageLink = titleImageLink;
+    }
 
     public int getId() {
         return id;
