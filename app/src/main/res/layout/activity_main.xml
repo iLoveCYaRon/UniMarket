@@ -276,9 +276,40 @@
                             android:text="#什么时候有聚" />
 
                     </moe.sui.unimarket.adapter.FlowLayout>
+                    <LinearLayout
+                        android:id="@+id/recommand_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/text_underline"
+                            android:text="推荐商品"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+                        <Button
+                            style="@style/text_flag_01"
+                            android:background="@drawable/flag_02"
+                            android:text="查看全部"
+                            android:textSize="10sp"
+                            />
+                    </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_product_title_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="717dp"
+                        android:scrollbars="none"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
                 </LinearLayout>
-
-
             </ScrollView>
         </moe.sui.unimarket.module.UniPullRefreshLayout>
     </FrameLayout>
