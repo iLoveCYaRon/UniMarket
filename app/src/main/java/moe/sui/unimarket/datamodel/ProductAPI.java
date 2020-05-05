@@ -19,7 +19,6 @@ public class ProductAPI {
 
     // 列出商品，默认列出10个最新商品
     public static List<Product> listProduct() {
-
         Request request = new Request.Builder()
                 .url(Config.SITE + PRODUCTPATH)
                 .addHeader("Content-Type", "application/json")
@@ -36,4 +35,22 @@ public class ProductAPI {
         return null;
     }
 
+    // 列出商品，默认列出10个最新商品
+    public static Product getProduct(int id) {
+
+        Request request = new Request.Builder()
+                .url(Config.SITE + PRODUCTPATH + id)
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Authorization", Config.SUPERTOKEN)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) Log.e(TAG, "listProduct: "+ Objects.requireNonNull(response.body()).string());
+            // 如果成功返回Product数组
+            return gson.fromJson(Objects.requireNonNull(response.body()).string(), Product.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

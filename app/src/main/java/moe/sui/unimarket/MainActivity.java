@@ -26,29 +26,14 @@ import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.BannerUtils;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.RunnableFuture;
 
 import moe.sui.unimarket.adapter.MainBannerAdapter;
-import moe.sui.unimarket.datamodel.APITest;
 import moe.sui.unimarket.datamodel.CustomerAuth;
 import moe.sui.unimarket.datamodel.Media;
 import moe.sui.unimarket.datamodel.MediaAPI;
-import moe.sui.unimarket.datamodel.PermissionsUtils;
 import moe.sui.unimarket.datamodel.Post;
 import moe.sui.unimarket.datamodel.PostAPI;
-import moe.sui.unimarket.datamodel.Product;
-import moe.sui.unimarket.datamodel.ProductAPI;
-import moe.sui.unimarket.fragment.ProductTitleFragment;
-import okhttp3.MediaType;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
-import static moe.sui.unimarket.datamodel.CustomerAuth.auth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // TopBar设置
-        QMUITopBar topBar = findViewById(R.id.main_TopBar);
+        QMUITopBar topBar = findViewById(R.id.detail_TopBar);
         topBar.addLeftImageButton(R.drawable.ic_main_logo, R.id.empty_view_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
