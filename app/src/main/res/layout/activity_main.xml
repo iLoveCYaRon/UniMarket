@@ -284,7 +284,7 @@
     </FrameLayout>
 
     <com.qmuiteam.qmui.widget.QMUITopBar
-        android:id="@+id/main_TopBar"
+        android:id="@+id/detail_TopBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/qmui_topbar_height"
         android:background="@color/colorPrimary"

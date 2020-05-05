@@ -91,8 +91,7 @@ public class ProductTitleFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Product product = mProductList.get(viewHolder.getAdapterPosition());
-                    ProductViewActivity.actionStart(getActivity(), product.getName(), product.getImages().get(0).getSrc(),
-                            product.getDescription());
+                    ProductViewActivity.actionStart(getActivity(), product.getId());
                 }
             });
             return viewHolder;
@@ -120,25 +119,25 @@ public class ProductTitleFragment extends Fragment {
                             .shadowElevation(50, 1f)
                             .skinManager(QMUISkinManager.defaultInstance(getContext()))
                             .edgeProtection(QMUIDisplayHelper.dp2px(getContext(), 10))
-                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("复制").onClick(
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_detail_favor).text("收藏").onClick(
                                     new QMUIQuickAction.OnClickListener() {
                                         @Override
                                         public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {
                                             quickAction.dismiss();
-                                            Toast.makeText(getContext(), "复制成功", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "收藏成功", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                             ))
-                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("划线").onClick(
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_detail_feedback).text("反馈").onClick(
                                     new QMUIQuickAction.OnClickListener() {
                                         @Override
                                         public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {
                                             quickAction.dismiss();
-                                            Toast.makeText(getContext(), "划线成功", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getContext(), "反馈成功", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                             ))
-                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_logo).text("分享").onClick(
+                            .addAction(new QMUIQuickAction.Action().icon(R.drawable.ic_detail_share).text("分享").onClick(
                                     new QMUIQuickAction.OnClickListener() {
                                         @Override
                                         public void onClick(QMUIQuickAction quickAction, QMUIQuickAction.Action action, int position) {

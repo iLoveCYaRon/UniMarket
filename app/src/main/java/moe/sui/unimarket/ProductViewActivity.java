@@ -12,11 +12,9 @@ import moe.sui.unimarket.fragment.ProductDetailFragment;
 
 public class ProductViewActivity extends AppCompatActivity {
 
-    public static void actionStart(Context context, String productTitle, String imageUri, String productContent) {
+    public static void actionStart(Context context, int productID) {
         Intent intent = new Intent(context, ProductViewActivity.class);
-        intent.putExtra("title", productTitle);
-        intent.putExtra("uri", imageUri);
-        intent.putExtra("content", productContent);
+        intent.putExtra("ID", productID);
         context.startActivity(intent);
     }
 
@@ -25,12 +23,10 @@ public class ProductViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        String title = getIntent().getStringExtra("title");
-        String content = getIntent().getStringExtra("content");
-        String imageUri = getIntent().getStringExtra("uri");
+        int productId = getIntent().getIntExtra("ID",0);
 
         ProductDetailFragment productDetailFragment = (ProductDetailFragment) getSupportFragmentManager().findFragmentById(R.id.product_detail_frag);
-        productDetailFragment.refresh(title, imageUri, content);
+        productDetailFragment.refresh(productId);
 
     }
 }

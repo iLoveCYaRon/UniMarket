@@ -58,7 +58,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/product_title_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="717dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
         android:scrollbars="none"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
