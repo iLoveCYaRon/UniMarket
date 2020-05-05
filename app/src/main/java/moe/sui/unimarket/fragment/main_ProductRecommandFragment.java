@@ -162,7 +162,6 @@ public class main_ProductRecommandFragment extends Fragment {
                 .from(Product.class)
                 .queryList();
 
-        RecyclerView recyclerView = view.findViewById(R.id.main_product_title_recycler_view);
         //RecyclerView recyclerView = view.findViewById(R.id.main_product_title_recycler_view);
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         //recyclerView.setLayoutManager(linearLayoutManager);
