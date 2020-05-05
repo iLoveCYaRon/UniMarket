@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.qmuiteam.qmui.widget.QMUILoadingView;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.qmuiteam.qmui.widget.grouplist.QMUICommonListItemView;
 import com.qmuiteam.qmui.widget.grouplist.QMUIGroupListView;
 
@@ -28,21 +29,23 @@ public class PersonalPageActivity  extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_page);
 
+
+        //功能列表
         QMUIGroupListView groupListView = findViewById(R.id.person_page);
 
-     //  Context context=getApplicationContext();
-       // QMUIGroupListView item1 =;
-       // QMUIGroupListView.Section setion=QMUIGroupListView.newSection(context);
-       // setion.setTitle("喜欢列表");
-       // setion.addTo(item1);
-       QMUICommonListItemView listItemView=groupListView.createItemView("喜欢列表");
-       QMUICommonListItemView listItemView1=groupListView.createItemView("历史记录");
-       QMUICommonListItemView listItemView2=groupListView.createItemView("售后");
-       QMUICommonListItemView listItemView3=groupListView.createItemView("设置");
-       QMUICommonListItemView listItemView4=groupListView.createItemView("关于");
-       QMUICommonListItemView listItemView5=groupListView.createItemView("信用");
+        QMUICommonListItemView listItemView=groupListView.createItemView("喜欢列表");
+        QMUICommonListItemView listItemView1=groupListView.createItemView("历史记录");
+        QMUICommonListItemView listItemView2=groupListView.createItemView("售后");
+        QMUICommonListItemView listItemView3=groupListView.createItemView("设置");
+        QMUICommonListItemView listItemView4=groupListView.createItemView("关于");
+        QMUICommonListItemView listItemView6=groupListView.createItemView("信用");
 
-  listItemView.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView1.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView2.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView3.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView4.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
+        listItemView6.setAccessoryType(QMUICommonListItemView.ACCESSORY_TYPE_CHEVRON);
 
         QMUIGroupListView.newSection(this)
                 .addItemView(listItemView,null)
@@ -50,8 +53,9 @@ public class PersonalPageActivity  extends AppCompatActivity  {
                 .addItemView(listItemView2,null)
                 .addItemView(listItemView3,null)
                 .addItemView(listItemView4,null)
-                .addItemView(listItemView5,null)
+                .addItemView(listItemView6,null)
                 .addTo(groupListView);
+
 
 }
 }
