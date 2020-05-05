@@ -263,22 +263,289 @@
                         <Button
                             android:id="@+id/btn5"
                             style="@style/text_flag_01"
-                            android:text="#这玩意怎么这么难" />
+                            android:text="#运动器材" />
 
                         <Button
                             android:id="@+id/btn6"
                             style="@style/text_flag_01"
-                            android:text="#设计师不用写代码就bb" />
+                            android:text="#网盘会员" />
 
                         <Button
                             android:id="@+id/btn7"
                             style="@style/text_flag_01"
-                            android:text="#什么时候有聚" />
+                            android:text="#健身房VIP卡" />
+                        <Button
+                            android:id="@+id/btn8"
+                            style="@style/text_flag_01"
+                            android:text="#二次元手办" />
+                        <Button
+                            android:id="@+id/btn9"
+                            style="@style/text_flag_01"
+                            android:text="#未拆封全新出" />
 
                     </moe.sui.unimarket.adapter.FlowLayout>
+                    <LinearLayout
+                        android:id="@+id/recommand_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/text_underline"
+                            android:text="推荐商品"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+                        <Button
+                            style="@style/text_flag_01"
+                            android:background="@drawable/flag_02"
+                            android:text="查看全部"
+                            android:textSize="10sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view2"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_ruler"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="19.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="无印良品尺子组合"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="用了三个月，8成新"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_doll"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice2"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="69.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB2"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB2" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="未闻花名粘土手办"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice2"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice2" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci2"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="有瑕，可小刀"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption2"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle2"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle2" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci2"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view3"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_plant"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice3"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="9.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB3"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB3" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="多肉盆栽"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice3"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice3" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci3"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="要换校区了养不起"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption3"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle3"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle3" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci3"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
-
-
             </ScrollView>
         </moe.sui.unimarket.module.UniPullRefreshLayout>
     </FrameLayout>
