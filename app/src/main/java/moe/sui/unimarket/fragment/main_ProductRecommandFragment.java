@@ -83,8 +83,7 @@ public class main_ProductRecommandFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Product product = mProductList.get(viewHolder.getAdapterPosition());
-                    ProductViewActivity.actionStart(getActivity(), product.getName(), product.getImages().get(0).getSrc(),
-                            product.getDescription());
+                    ProductViewActivity.actionStart(getActivity(), product.getId());
                 }
             });
             return viewHolder;
