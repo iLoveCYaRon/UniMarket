@@ -283,13 +283,42 @@
 
                 </WebView>
 
-                <TextView
-                    android:id="@+id/textComment"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:text="全部留言"
-                    android:textSize="24sp" />
+                    android:layout_marginVertical="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/colorTextGrey" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:gravity="center"
+                        android:text="   全部留言   "
+                        android:textColor="@color/colorText" />
+
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/colorTextGrey" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:layout_marginBottom="20sp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/product_detail_comment" />
 
             </LinearLayout>
         </ScrollView>
