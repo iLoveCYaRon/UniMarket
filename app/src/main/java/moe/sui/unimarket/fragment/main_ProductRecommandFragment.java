@@ -163,9 +163,10 @@ public class main_ProductRecommandFragment extends Fragment {
                 .queryList();
 
         RecyclerView recyclerView = view.findViewById(R.id.main_product_title_recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new ProductAdapter(productList));
+        //RecyclerView recyclerView = view.findViewById(R.id.main_product_title_recycler_view);
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        //recyclerView.setLayoutManager(linearLayoutManager);
+        //recyclerView.setAdapter(new ProductAdapter(productList));
 
 
         return view;
@@ -201,11 +202,10 @@ public class main_ProductRecommandFragment extends Fragment {
             {
                 case 1:
                     // 获取完数据，可以加载recyclerView
-                    RecyclerView recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.main_product_title_recycler_view);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-                    recyclerView.setLayoutManager(linearLayoutManager);
-                    recyclerView.setAdapter(new ProductAdapter(SQLite.select().from(Product.class).queryList()));
-                    dialog.hide();
+                    //RecyclerView recyclerView = Objects.requireNonNull(getView()).findViewById(R.id.main_product_title_recycler_view);
+                    //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                    //recyclerView.setLayoutManager(linearLayoutManager);
+                    //recyclerView.setAdapter(new ProductAdapter(SQLite.select().from(Product.class).queryList()));
                     break;
             }
         }
