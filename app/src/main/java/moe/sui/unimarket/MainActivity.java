@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         msg.what = 1;
         handler.sendMessage(msg);
 
+        pullRefresh.setToRefreshDirectly();
     }
 
 

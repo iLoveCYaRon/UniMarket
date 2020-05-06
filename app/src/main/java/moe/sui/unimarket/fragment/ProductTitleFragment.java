@@ -197,6 +197,8 @@ public class ProductTitleFragment extends Fragment {
                 .setTipWord("正在加载")
                 .create();
 
+        refreshProduct();
+
         return view;
     }
 
