@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import okhttp3.*;
 
-public class UserAuth {
+public class CustomerAuth {
     private static String TAG = "UserAuth";
 
     private static final OkHttpClient client = new OkHttpClient();
@@ -21,13 +21,14 @@ public class UserAuth {
 
         //利用body和url建立POST request
         Request request = new Request.Builder()
-                .url("https://wp.sui.moe/wp-json/jwt-auth/v1/token")
+                .url("https://shop.sui.moe/wp-json/jwt-auth/v1/token")
                 .post(formBody)
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+                return null;
+                //throw new IOException("Unexpected code " + response);
             }
             //获取response中的token
             JSONObject rec = new JSONObject(response.body().string());
@@ -43,7 +44,7 @@ public class UserAuth {
         RequestBody body = RequestBody.create(mediaType, "");
 
         Request request = new Request.Builder()
-                .url("https://wp.sui.moe/wp-json/jwt-auth/v1/token/validate")
+                .url("https://shop.sui.moe/wp-json/jwt-auth/v1/token/validate")
                 .method("POST", body)
                 .addHeader("Authorization", "Bearer " + token)
                 .build();

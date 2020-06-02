@@ -1,18 +1,584 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/qmui_topbar_height"
+        android:background="?attr/qmui_skin_support_color_background"
+        android:fitsSystemWindows="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <moe.sui.unimarket.module.UniPullRefreshLayout
+            android:id="@+id/pull_to_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight">
+
+            <ScrollView
+                android:id="@+id/main_scorll"
+                android:layout_width="match_parent"
+                android:layout_height="539dp"
+                android:background="@color/colorBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/main_linearlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="0dp">
+
+                        <ImageView
+                            android:id="@+id/img_banner_background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="180dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/main_rect_bar" />
+
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="0dp"
+                            android:layout_height="160dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@color/colorBackground"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                        </com.youth.banner.Banner>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackground"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/category_deal"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_deal"
+                            android:text="@string/publish_deal"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/category_book"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_book"
+                            android:text="@string/two_hand_textbook"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/category_deal"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/category_questionnaire"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_questionnaire"
+                            android:text="@string/questionnaire_help"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/category_lecture"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/category_lecture"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_lecture"
+                            android:text="@string/lecture_info"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintStart_toEndOf="@+id/category_deal"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/category_errend"
+                            style="?attr/buttonBarStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@android:color/transparent"
+                            android:drawableTop="@drawable/ic_main_category_errend"
+                            android:text="@string/school_run"
+                            android:textColor="@color/colorText"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toStartOf="@+id/category_book"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/category_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/text_underline"
+                            android:text="商品种类"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+                        <Button
+                            style="@style/text_flag_01"
+                            android:background="@drawable/flag_02"
+                            android:text="查看全部"
+                            android:textSize="10sp"
+                            />
+                    </LinearLayout>
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            >
+
+                            <Button
+                                android:id="@+id/category1"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category1"
+                                android:text="二手文具&#10;本子绘图工具"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/category2"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category2"
+                                android:text="体育器材&#10;体育课使用"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                />
+                            <Button
+                                android:id="@+id/category3"
+                                android:layout_width="140dp"
+                                android:layout_height="60dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/flag_03"
+                                android:drawableLeft="@drawable/ic_main_category3"
+                                android:text="KFC&#10;代金券折扣券"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                />
+
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
+                    <moe.sui.unimarket.adapter.FlowLayout
+                        android:id="@+id/FlowLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <Button
+                            android:id="@+id/btn1"
+                            style="@style/text_flag_01"
+                            android:text="#王者代练" />
+
+                        <Button
+                            android:id="@+id/btn2"
+                            style="@style/text_flag_01"
+                            android:text="#家乡の机械键盘" />
+
+                        <Button
+                            android:id="@+id/btn3"
+                            style="@style/text_flag_01"
+                            android:text="#工业设计" />
+
+                        <Button
+                            android:id="@+id/btn4"
+                            style="@style/text_flag_01"
+                            android:text="#文具" />
+
+                        <Button
+                            android:id="@+id/btn5"
+                            style="@style/text_flag_01"
+                            android:text="#运动器材" />
+
+                        <Button
+                            android:id="@+id/btn6"
+                            style="@style/text_flag_01"
+                            android:text="#网盘会员" />
+
+                        <Button
+                            android:id="@+id/btn7"
+                            style="@style/text_flag_01"
+                            android:text="#健身房VIP卡" />
+                        <Button
+                            android:id="@+id/btn8"
+                            style="@style/text_flag_01"
+                            android:text="#二次元手办" />
+                        <Button
+                            android:id="@+id/btn9"
+                            style="@style/text_flag_01"
+                            android:text="#未拆封全新出" />
+
+                    </moe.sui.unimarket.adapter.FlowLayout>
+                    <LinearLayout
+                        android:id="@+id/recommand_linearlayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/text_underline"
+                            android:text="推荐商品"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+                        <Button
+                            style="@style/text_flag_01"
+                            android:background="@drawable/flag_02"
+                            android:text="查看全部"
+                            android:textSize="10sp"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view2"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_ruler"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="19.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="无印良品尺子组合"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="用了三个月，8成新"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_doll"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice2"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="69.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB2"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB2" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="未闻花名粘土手办"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice2"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice2" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci2"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="有瑕，可小刀"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption2"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle2"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle2" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci2"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/product_view3"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/main_plant"
+                            app:srcCompat="@drawable/banner_shadow" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp">
+
+                            <TextView
+                                android:id="@+id/textViewPrice3"
+                                android:layout_width="70dp"
+                                android:layout_height="40dp"
+                                android:text="9.9"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBaseline_toBaselineOf="@+id/textViewRMB3"
+                                app:layout_constraintStart_toEndOf="@+id/textViewRMB3" />
+
+                            <TextView
+                                android:id="@+id/textViewRMB3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="18dp"
+                                android:text="￥"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViewTitle3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="多肉盆栽"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toEndOf="@+id/textViewPrice3"
+                                app:layout_constraintTop_toTopOf="@+id/textViewPrice3" />
+
+                            <TextView
+                                android:id="@+id/textViewDesci3"
+                                android:layout_width="0dp"
+                                android:layout_height="20dp"
+                                android:text="要换校区了养不起"
+                                android:textColor="@color/colorTextGrey"
+                                app:layout_constraintEnd_toStartOf="@+id/buttonOption3"
+                                app:layout_constraintStart_toStartOf="@+id/textViewTitle3"
+                                app:layout_constraintTop_toBottomOf="@+id/textViewTitle3" />
+
+                            <ImageButton
+                                android:id="@+id/buttonOption3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="4dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/textViewDesci3"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/textViewDesci3"
+                                app:srcCompat="@drawable/ic_card_option" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </moe.sui.unimarket.module.UniPullRefreshLayout>
+    </FrameLayout>
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/detail_TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_scorll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:qmui_bottomDividerColor="@color/colorBackground"
+        app:qmui_bottomDividerHeight="0px"
+        app:qmui_topbar_image_btn_height="?attr/qmui_topbar_height"
+        app:qmui_topbar_image_btn_width="25dp"
+        app:qmui_topbar_subtitle_text_size="0sp"
+        app:qmui_topbar_title_color="@color/colorBackground"
+        app:qmui_topbar_title_gravity="center"
+        app:qmui_topbar_title_text_size="0sp"
+        app:qmui_topbar_title_text_size_with_subtitle="0sp">
+
+    </com.qmuiteam.qmui.widget.QMUITopBar>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
+
+
+
+
+
+
+
